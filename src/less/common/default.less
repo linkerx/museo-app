@@ -1,0 +1,97 @@
+/* VARIABLES */
+@import "../vars/adapt.less";
+@import "../vars/colors.less";
+
+/* MIXINS */
+@import "../mixins/reset.less";
+@import "../mixins/fonts.less";
+@import "../mixins/backgrounds.less";
+
+/* DEFAULTS */
+
+* {.reset;}
+
+body {
+	font-family: 'Ubuntu', sans-serif;
+	color: @color-texto;
+        .font-size-normal;
+}
+
+a {
+	color: @color-link;
+	outline: 0;
+}
+
+a:hover {
+	text-decoration:none;
+	color: @color-link-hover;
+}
+
+p {
+    line-height: 1.4em;
+}
+
+.clearfix {
+	clear:both;
+}
+
+.wrapper {
+	padding: 20px 2%;
+}
+
+h1 {
+	.titulo;
+        font-size: 1.8em;
+	color: @color-2;
+        border-bottom: 2px solid @color-2;
+        padding-bottom:1vh;
+        margin-bottom: 2vh;
+        clear:both;
+}
+
+h2 {
+	.titulo;
+        font-size: 1.5em;
+        color: @color-5;
+        font-weight:500;
+        text-align:left;
+        margin-bottom: 1vh;
+        margin-top: 2vh;
+        clear:both;
+}
+
+h3 {
+	.titulo;
+        font-size: 1.2em;
+        color: @color-1;
+        font-weight:bold;
+        text-align:left;
+        margin-bottom: 1vh;
+        margin-top: 1vh;
+        clear:both;
+}
+
+button {
+	padding: 10px;
+	margin: 2%;
+	border-radius: 5px;
+	background-color: @color-2;
+        color: #fff;
+}
+
+button:hover {
+	background-color: @color-1;
+}
+
+strong {
+    font-weight: bold;
+}
+
+.wpcf7-form input,
+.wpcf7-form textarea {
+    border: 1px solid #777;
+    border-radius: 1vh;
+    margin: 1vh 2%;
+    padding: 1vh 2%;
+    width:92%;
+}

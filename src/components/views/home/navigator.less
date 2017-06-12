@@ -1,0 +1,36 @@
+#parallax-navigator {
+    position: absolute;
+    width: auto;
+    top: 35vh;
+    left: 0;
+    width: auto;
+    height: 20vh;
+    z-index: 50;
+}
+
+#parallax-navigator ul li {
+    background-color: @color-3;
+    margin: 2vh 0;
+    padding: 1vh 1.5vh;
+    border-radius: 0 1vh 1vh 0;
+    cursor:pointer;
+    color: @color-5;
+    position:relative;
+}
+
+#parallax-navigator ul li.active {
+    color:#fff;
+}
+
+
+#parallax-navigator ul li:not(.active):hover {
+    color: @color-4;
+}
+
+#parallax-navigator ul li i{
+    font-size:5vh;
+}
+
+#parallax-navigator ul li span {
+    display:none;
+}

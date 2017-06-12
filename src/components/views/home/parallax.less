@@ -1,0 +1,47 @@
+.parallax {
+    height: 100vh;
+    
+    perspective: 300px;
+    -webkit-perspective: 300px;
+    
+    perspective-origin-x: 100%;
+    overflow-x: hidden;
+}
+
+.parallax-group {
+  position: relative;
+  height: 100vh;
+  
+  transform-style: preserve-3d;
+  
+  -webkit-transition: -webkit-transform 0.5s;
+    transition: transform 0.5s;
+}
+
+.parallax-layer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  
+  transform-origin-x: 100%;
+}
+
+.parallax-layer-front {
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  z-index: 30;
+}
+
+.parallax-layer-middle {
+  transform: translateZ(-80px) scale(1.3);
+  -webkit-transform: translateZ(-80px) scale(1.3);
+  z-index: 20;
+}
+
+.parallax-layer-back {
+  transform: translateZ(-300px) scale(2.1);
+  -webkit-transform: translateZ(-300px) scale(2.1);
+  z-index: 10;
+}

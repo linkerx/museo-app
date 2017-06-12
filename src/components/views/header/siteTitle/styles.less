@@ -1,0 +1,48 @@
+@import "../../../../less/common/default.less";
+
+header .site-title {
+    position: absolute;
+    top: 2vh;
+    left: 2%;
+    width: 50%;
+
+    @media @narrow {
+      width:100%;
+    }
+}
+
+header .site-title .logo {
+    float:left;
+}
+
+header .site-title .logo img {
+    height: 6.5vh;
+    /* filter: drop-shadow(1px 1px 5px #000); */
+}
+
+header .site-title .title {
+    float:left;
+    margin-left:12px;
+}
+
+header .site-title .title a {
+    font-size: 3vh;
+    /* text-shadow: 1px 1px 5px #000; */
+    font-weight: bold;
+}
+
+header .site-title .title .bapro a {
+    color: @color-3;
+}
+
+header .site-title .title .emma a {
+    color: @color-1;
+}
+
+header .site-title .title a:hover {
+    color: @color-5;
+}
+
+header .site-title .title .bapro {
+    margin-top:0.5vh;
+}
