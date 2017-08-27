@@ -1,9 +1,12 @@
 var React = require('react');
 var FontAwesome = require('react-fontawesome');
+require('./styles.less');
 
-function MenuTrigger() {
+function MenuTrigger(props) {
   return (
-    <FontAwesome name='bars' />
+    <div className='menu-trigger'>
+      <button onClick={props.openMenu}><FontAwesome name='bars' /></button>
+    </div>
   )
 }
 

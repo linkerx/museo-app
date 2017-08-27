@@ -3,9 +3,7 @@ var Link = require('react-router-dom').Link;
 
 function ItemTitle(props) {
   return (
-    <div className='title'>
-      <Link to={props.linkTo}>{props.title}</Link>
-    </div>
+      <h2><Link to={props.linkTo}>{props.title}</Link></h2>
   )
 }
 

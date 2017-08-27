@@ -1,9 +1,13 @@
-.parallax {
-    height: 100vh;
-    
+#parallax {
+    position: absolute;
+    height: 92vh;
+    top: 8vh;
+    left: 0;
+    width: 100%;
+  
     perspective: 300px;
     -webkit-perspective: 300px;
-    
+
     perspective-origin-x: 100%;
     overflow-x: hidden;
 }
@@ -11,9 +15,9 @@
 .parallax-group {
   position: relative;
   height: 100vh;
-  
+
   transform-style: preserve-3d;
-  
+
   -webkit-transition: -webkit-transform 0.5s;
     transition: transform 0.5s;
 }
@@ -24,7 +28,7 @@
   right: 0;
   bottom: 0;
   left: 0;
-  
+
   transform-origin-x: 100%;
 }
 

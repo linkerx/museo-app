@@ -1,10 +1,11 @@
 var React = require('react');
+require('./styles.less');
 
 function Info() {
   return (
-    <div className='info'>
+    <section id='home-info' className='parallax-group'>
       Info!
-    </div>
+    </section>
   )
 }
 

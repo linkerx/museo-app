@@ -1,9 +1,9 @@
-@import "../../../../less/common/default.less";
+@import (reference) "common/default.less";
 
 header .site-title {
     position: absolute;
-    top: 2vh;
-    left: 2%;
+    top: 1vh;
+    left: 1%;
     width: 50%;
 
     @media @narrow {
@@ -16,7 +16,8 @@ header .site-title .logo {
 }
 
 header .site-title .logo img {
-    height: 6.5vh;
+    height: 4.5vh;
+    margin-top:0.4vh;
     /* filter: drop-shadow(1px 1px 5px #000); */
 }
 
@@ -26,7 +27,7 @@ header .site-title .title {
 }
 
 header .site-title .title a {
-    font-size: 3vh;
+    font-size: 2vh;
     /* text-shadow: 1px 1px 5px #000; */
     font-weight: bold;
 }
@@ -36,7 +37,7 @@ header .site-title .title .bapro a {
 }
 
 header .site-title .title .emma a {
-    color: @color-1;
+    color: #333;
 }
 
 header .site-title .title a:hover {
@@ -44,5 +45,5 @@ header .site-title .title a:hover {
 }
 
 header .site-title .title .bapro {
-    margin-top:0.5vh;
+    margin-top:0.3vh;
 }

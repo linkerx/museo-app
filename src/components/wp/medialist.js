@@ -1,6 +1,7 @@
 var React = require('react');
 var WpApi = require('./api');
 var ListImage = require('./list-item');
+var ItemImage = require('./item-image')
 
 class WpMediaList extends React.Component {
 
@@ -8,6 +9,8 @@ class WpMediaList extends React.Component {
     super();
     this.state = {
       items: null,
+      size: props.size,
+      render: props.render
     }
     this.updateItems = this.updateItems.bind(this);
   }
@@ -19,20 +22,26 @@ class WpMediaList extends React.Component {
   updateItems(){
     this.setState(function () {
       return {
-        items: null
+        items: null,
+        size: this.state.size,
+        render: this.state.render
       }
     });
+
     var opts = {
       url: this.props.url,
       type: 'media',
-      queries: this.props.queries
+      queries: this.props.queries,
+      debug: true
     }
 
     WpApi.getList(opts)
       .then(function(items) {
         this.setState(function () {
           return {
-            items: items
+            items: items,
+            size: this.state.size,
+            render: this.state.render
           }
         });
       }.bind(this));
@@ -46,13 +55,13 @@ class WpMediaList extends React.Component {
           this.props.children
           :
           this.state.items.map(function (item, index) {
-            var size = 'full';
-            if(this.props.size){
-              size = this.props.size;
-            }
-            var img_src = item.media_details.sizes[size].source_url;
-            return (<li><ItemImage src={img_src} title={item.title.rendered} alt={item.alt_text} /></li>)
-          }).bind(this)
+            var img_src = item.media_details.sizes[this.state.size].source_url;
+            return (
+              <li key={index}>
+                <ItemImage src={img_src} title={item.title.rendered} alt={item.alt_text} render={this.state.render} />
+              </li>
+            )
+          }.bind(this))
         }
       </ul>
     )

@@ -5,7 +5,7 @@ var ListItem = require('./list-item');
 class WpList extends React.Component {
 
   constructor(props) {
-    super();
+    super(props);
     this.state = {
       items: null,
     }
@@ -25,7 +25,8 @@ class WpList extends React.Component {
     var opts = {
       url: this.props.url,
       type: this.props.type,
-      queries: this.props.queries
+      queries: this.props.queries,
+      debug: this.props.debug
     }
 
     WpApi.getList(opts)
@@ -46,8 +47,8 @@ class WpList extends React.Component {
           this.props.children
           :
           this.state.items.map(function (item, index) {
-            return (<ListItem key={item.id} item={item} />)
-          })
+            return (<ListItem key={item.id} item={item} defaultImg={this.props.defaultImg} />)
+          }.bind(this))
         }
       </div>
     )

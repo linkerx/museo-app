@@ -1,12 +1,13 @@
 var React = require('react');
 var Link = require('react-router-dom').Link;
 require("./styles.less");
+var Image = require('./bp.png');
 
 function SiteTitle() {
   return (
     <div className="site-title">
       <div className="logo">
-          <img src="<?php echo get_template_directory_uri(); ?>/img/bp.png" />
+          <img src={Image} />
       </div>
       <div className="title">
         <div className="emma">

@@ -1,8 +1,11 @@
 var React = require('react');
+require('./styles.less');
 
 function Cargando () {
   return (
-    <div>Cargando</div>
+    <div id='cargando'>
+      Cargando...
+    </div>
   )
 }
 
