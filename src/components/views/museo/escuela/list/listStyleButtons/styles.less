@@ -1,0 +1,40 @@
+@import (reference) "common/default.less";
+
+#list-style-buttons {
+  position: absolute;
+  top: 0vh;
+  right: 5%;
+  width: auto;
+  height: 5vh;
+  display: flex;
+
+  @media @narrow, @super-narrow {
+    top: -1vh;
+  }
+}
+
+#list-style-buttons button {
+  height: 5vh;
+  background-color: #fff;
+  margin: 1vh 5%;
+  padding: 0;
+  cursor:pointer;
+}
+
+#list-style-buttons button.active {
+  cursor:not-allowed;
+}
+
+#list-style-buttons button span:before {
+  font-size: 5vh;
+  background-color: #fff;
+  color:#333;
+}
+
+#list-style-buttons button.active span:before {
+  color: #6eb444;
+}
+
+#list-style-buttons button:not(.active):hover span:before {
+  color: #7a929e;
+}

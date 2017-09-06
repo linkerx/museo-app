@@ -2,7 +2,10 @@ var React = require('react');
 var Cargando = require('utils/cargando');
 var WpApi = require('wp/api');
 var PeriodoItem = require('./listItem');
+var ListStyleButtons = require('./listStyleButtons');
 require('./styles.less');
+require('./styles_as_icons.less');
+require('./styles_as_list.less');
 
 class Periodos extends React.Component {
 
@@ -13,6 +16,7 @@ class Periodos extends React.Component {
       listStyle: 'icons'
     }
     this.updateItems = this.updateItems.bind(this);
+    this.changeStyle = this.changeStyle.bind(this);
   }
 
   componentDidMount(){
@@ -27,13 +31,18 @@ class Periodos extends React.Component {
       }
     });
 
-    var queries = ['_embed'];
+    var queries = [
+      '_embed',
+      'filter[orderby]=meta_value_num',
+      'filter[meta_key]=inicio',
+      'filter[order]=ASC'
+    ];
 
     var opts = {
       url: 'http://admin.emmanozzi.org',
       type: 'periodo',
       queries: queries,
-      debug: false
+      debug: true
     }
 
     WpApi.getList(opts)
@@ -47,10 +56,20 @@ class Periodos extends React.Component {
       }.bind(this));
   }
 
+  changeStyle(newStyle){
+    this.setState(function(){
+      return {
+        items: this.state.items,
+        listStyle: newStyle
+      }
+    });
+  }
+
   render() {
     return (
       <section id="archive-periodos" className={this.state.listStyle}>
         <h1>Períodos</h1>
+        <ListStyleButtons changeStyle={this.changeStyle} actualStyle={this.state.listStyle} />
         <div className='list'>
         {!this.state.items
           ?

@@ -1,13 +1,13 @@
 var React = require('react');
 var Cargando = require('utils/cargando');
 var WpApi = require('wp/api');
-var TopicoItem = require('./listItem');
+var EjeItem = require('./listItem');
 var ListStyleButtons = require('./listStyleButtons');
 require('./styles.less');
 require('./styles_as_icons.less');
 require('./styles_as_list.less');
 
-class Topicos extends React.Component {
+class Escuela extends React.Component {
 
   constructor(props) {
     super(props);
@@ -40,7 +40,7 @@ class Topicos extends React.Component {
 
     var opts = {
       url: 'http://admin.emmanozzi.org',
-      type: 'topico',
+      type: 'eje',
       queries: queries,
       debug: true
     }
@@ -67,8 +67,8 @@ class Topicos extends React.Component {
 
   render() {
     return (
-      <section id="archive-topicos" className={this.state.listStyle}>
-        <h1>Tópicos</h1>
+      <section id="escuela" className={this.state.listStyle}>
+        <h1>Escuela</h1>
         <ListStyleButtons changeStyle={this.changeStyle} actualStyle={this.state.listStyle} />
         <div className='list'>
         {!this.state.items
@@ -77,7 +77,7 @@ class Topicos extends React.Component {
           :
           this.state.items.map(function (item, index) {
             return (
-              <TopicoItem key={item.id} item={item} defaultImg='http://emmanozzi.org/public/images/noimage.jpg' />
+              <EjeItem key={item.id} item={item} defaultImg='http://emmanozzi.org/public/images/noimage.jpg' />
             )
           }.bind(this))
         }
@@ -89,4 +89,4 @@ class Topicos extends React.Component {
 
 // TODO: propTypes
 
-module.exports = Topicos;
+module.exports = Escuela;

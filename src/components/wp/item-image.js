@@ -1,5 +1,4 @@
 var React = require('react');
-var Link = require('react-router-dom').Link;
 
 class ItemImage extends React.Component {
   constructor(props){
@@ -22,7 +21,6 @@ class ItemImage extends React.Component {
 
     return (
       <div className={cls}>
-      {this.props.linkTo && <Link to={this.props.linkTo}>
         {this.props.render === 'img'
           ?
             <img
@@ -33,8 +31,6 @@ class ItemImage extends React.Component {
           :
             <div className='image' style={background}></div>
         }
-        </Link>
-      }
       </div>
     )
   }

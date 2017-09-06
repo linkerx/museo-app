@@ -115,6 +115,9 @@ module.exports = {
               }).join('&');
           }
 
+          if(options.debug)
+            console.log(url);
+
           return axios.get(url)
             .then(function (response) {
               return response.data;

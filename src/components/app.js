@@ -62,8 +62,9 @@ class App extends React.Component {
               <Route exact path='/periodo/:slug' component={Periodo}/>
               <Route exact path='/topicos' component={Topicos} />
               <Route exact path='/topico/:slug' component={Topico} />
-              <Route exact path='/hecho/:slug' component={Hecho} />
+              <Route exact path='/proceso/:slug' component={Hecho} />
               <Route exact path='/escuela' component={Ejes} />
+              <Route exact path='/escuela/eje/:slug' component={Eje} />
               <Route component={NotFound} />
             </Switch>
           </div>

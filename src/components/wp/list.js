@@ -47,8 +47,8 @@ class WpList extends React.Component {
           this.props.children
           :
           this.state.items.map(function (item, index) {
-            return (<ListItem key={item.id} item={item} defaultImg={this.props.defaultImg} />)
-          }.bind(this))
+            return (<ListItem key={item.id} item={item} />)
+          })
         }
       </div>
     )

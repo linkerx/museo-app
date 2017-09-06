@@ -4,12 +4,12 @@ var WpItemImage = require('wp/item-image');
 var Cargando = require('utils/cargando');
 var FontAwesome = require('react-fontawesome');
 var renderHTML = require('react-render-html');
-var TopicoHechoItem = require('./hechoItem');
+var EjeHechoItem = require('./hechoItem');
 require('./styles.less');
 require('./hechos.less');
 
 
-class Topico extends React.Component {
+class Eje extends React.Component {
 
   constructor(props) {
     super();
@@ -35,7 +35,7 @@ class Topico extends React.Component {
     });
     var opts = {
       url: 'http://admin.emmanozzi.org',
-      type: 'topico',
+      type: 'eje',
       slug: this.props.match.params.slug,
       queries: ['_embed'],
       debug: false
@@ -46,7 +46,7 @@ class Topico extends React.Component {
 
           var queries_hechos = [
             '_embed',
-            'filter[topico]='+item[0].id,
+            'filter[eje]='+item[0].id,
             'filter[orderby]=meta_value_num',
             'filter[meta_key]=inicio',
             'filter[order]=ASC'
@@ -126,7 +126,7 @@ class Topico extends React.Component {
     }
 
     return (
-      <section id='topico'>
+      <section id='eje'>
         {!this.state.item
           ?
           <Cargando />
@@ -152,12 +152,12 @@ class Topico extends React.Component {
               }
 
               <div className='hechos'>
-                <h1>Hechos/procesos del Tópico</h1>
+                <h1>Hechos/procesos del Eje</h1>
                 {this.state.item.hechos &&
                   <div className='list'>
                     {this.state.item.hechos.map(function (item, index) {
                         return (
-                          <TopicoHechoItem key={item.id} item={item} defaultImg='http://emmanozzi.org/public/images/noimage.jpg' />
+                          <EjeHechoItem key={item.id} item={item} defaultImg='http://emmanozzi.org/public/images/noimage.jpg' />
                         )
                       }.bind(this))
                     }
@@ -166,7 +166,7 @@ class Topico extends React.Component {
               </div>
 
               <div className='objetos'>
-                <h1>Objetos relacionados con el Tópico</h1>
+                <h1>Objetos relacionados con el Eje</h1>
               </div>
             </div>
           </article>
@@ -177,4 +177,4 @@ class Topico extends React.Component {
 
 }
 
-module.exports = Topico;
+module.exports = Eje;

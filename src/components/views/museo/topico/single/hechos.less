@@ -1,0 +1,105 @@
+@import (reference) "common/default.less";
+
+#topico .hechos .list {
+  display:block;
+  width:100%;
+  margin-left:0;
+  margin-top: 4vh;
+}
+
+#topico .hechos .list article {
+  position:relative;
+  width: 100%;
+  height: 25vh;
+  display: flex;
+
+  @media @narrow, @super-narrow {
+    height: 35vh;
+    margin-bottom:3vh;
+  }
+}
+
+#topico .hechos .list article .list-item-image {
+  width: 25vh;
+
+  @media @narrow, @super-narrow {
+    margin-top: 3vh;
+  }
+}
+
+#topico .hechos .list article .list-item-content {
+  width: auto;
+  margin-left: 2%;
+  height: 20vh;
+  overflow-y: auto;
+  padding-right: 2%;
+  position: relative;
+
+  @media @square {
+    margin-left:5%;
+  }
+
+  @media @narrow, @super-narrow {
+    margin-left: 12%;
+    height:auto;
+  }
+}
+
+#topico .hechos .list article h2 {
+  font-size: 1.5em;
+  margin-top: 1vh;
+}
+
+
+#topico .hechos .list article .excerpt {
+  width:100%;
+}
+
+#topico .hechos .list article  .image_container {
+  width: 100%;
+  height: 15vh;
+  margin: auto;
+  position:relative;
+
+}
+
+#topico .hechos .list article .image_container .image{
+  position:absolute;
+  width:20vh;
+  height:20vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  border-radius: 50%;
+  border: 1px solid #aaa;
+
+  transition: background-size 10s ease;
+}
+
+#topico .hechos .list article .image_container .image:hover{
+  background-size: 150%;
+}
+
+#topico .hechos .list article .date {
+  position:absolute;
+  top:0;
+  right:2%;
+  font-size: 0.6em;
+  font-weight: bold;
+  margin-top: 2vh;
+
+  @media @narrow, @super-narrow {
+    position: relative;
+
+  }
+}
+
+#topico .hechos .list article .date .inicio {
+  margin-right: 15px;
+  font-weight: bold;
+}
+
+#topico .hechos .list article .date .fin {
+  margin-left: 15px;
+  font-weight: bold;
+}

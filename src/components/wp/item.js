@@ -36,18 +36,6 @@ class WpItem extends React.Component {
     WpApi.getItem(opts)
       .then(function(item){
         this.setState(function(){
-          /*
-          var content = item[0].content.rendered;
-          var htmlObject = document.createElement('div');
-          htmlObject.innerHTML = content;
-          var form = htmlObject.getElementsByClassName('wpcf7-form')[0];
-          if(form) {
-            var idInput = htmlObject.getElementsByClassName('_wpcf7');
-            form.action = 'http://localhost/wp-json/contact-form-7/v1/contact-forms/9/feedback';
-            form.submit = this.setFormSubmit();
-          }
-          item[0].content.parsed = htmlObject.outerHTML;
-          */
           return {
             item: item[0]
           }
@@ -59,8 +47,6 @@ class WpItem extends React.Component {
     if(this.state.item){
       if(this.state.item._embedded['wp:featuredmedia']){
         var item_image = this.state.item._embedded['wp:featuredmedia'][0].media_details.sizes['thumbnail'].source_url;
-      } else if(this.props.defaultImg){
-        var item_image = this.props.defaultImg;
       }
     }
 

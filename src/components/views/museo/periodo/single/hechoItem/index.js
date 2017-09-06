@@ -4,7 +4,7 @@ var ItemImage = require('wp/item-image');
 var renderHTML = require('react-render-html');
 var Link = require('react-router-dom').Link;
 
-function PeriodoItem(props) {
+function PeriodoHechoItem(props) {
 
   var item_image = '';
 
@@ -55,4 +55,4 @@ function PeriodoItem(props) {
   )
 }
 
-module.exports = PeriodoItem;
+module.exports = PeriodoHechoItem;

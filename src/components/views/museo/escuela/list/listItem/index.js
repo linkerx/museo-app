@@ -4,7 +4,7 @@ var ItemImage = require('wp/item-image');
 var renderHTML = require('react-render-html');
 var Link = require('react-router-dom').Link;
 
-function PeriodoItem(props) {
+function EjeItem(props) {
 
   var item_image = '';
 
@@ -40,19 +40,19 @@ function PeriodoItem(props) {
   return(
     <article>
       <div className='list-item-image'>
-        <Link to={'/'+props.item.type+'/'+props.item.slug} >
-          <ItemImage render='back' src={item_image} linkTo={'/'+props.item.type+'/'+props.item.slug} />
+        <Link to={'/escuela/'+props.item.type+'/'+props.item.slug} >
+          <ItemImage render='back' src={item_image} />
         </Link>
       </div>
       <div className='list-item-content'>
         <div className='date'>
           [<span className='inicio'>{show_fecha_inicio}</span>-<span className='fin'>{show_fecha_fin}</span>]
         </div>
-        <ItemTitle title={props.item.title.rendered} linkTo={'/'+props.item.type+'/'+props.item.slug} />
+        <ItemTitle title={props.item.title.rendered} linkTo={'/escuela/'+props.item.type+'/'+props.item.slug} />
         <div className='excerpt'>{renderHTML(props.item.excerpt.rendered)}</div>
       </div>
     </article>
   )
 }
 
-module.exports = PeriodoItem;
+module.exports = EjeItem;
