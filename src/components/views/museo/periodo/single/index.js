@@ -47,9 +47,6 @@ class Periodo extends React.Component {
           var queries_hechos = [
             '_embed',
             'filter[periodo]='+item[0].id,
-            'filter[orderby]=meta_value_num',
-            'filter[meta_key]=inicio',
-            'filter[order]=ASC'
           ];
 
           var opts_hechos = {
@@ -61,7 +58,33 @@ class Periodo extends React.Component {
 
           WpApi.getList(opts_hechos)
             .then(function(hechos) {
-              item[0].hechos = hechos;
+
+              hechos.sort(function(a,b){
+                if(a.inicio < b.inicio) return -1;
+                if(a.inicio > b.inicio) return 1;
+                return 0;
+              });
+
+              var hechosAgrupados = hechos.reduce(function(acum,curr){
+                console.log(curr);
+                if(curr.alcance == 'local'){
+                  if(!acum['locales']) acum['locales'] = [];
+                  acum['locales'].push(curr)
+                }
+                if(curr.alcance == 'nacional'){
+                  if(!acum['nacionales']) acum['nacionales'] = [];
+                  acum['nacionales'].push(curr)
+                }
+                if(curr.alcance == 'intenacional'){
+                  if(!acum['internacionales']) acum['internacionales'] = [];
+                  acum['ineternacionales'].push(curr)
+                }
+                return acum;
+                },
+              {});
+
+              item[0].hechos = hechosAgrupados;
+
               this.setState(function(){
                 return {
                   item: item[0],
@@ -153,9 +176,29 @@ class Periodo extends React.Component {
 
               <div className='hechos'>
                 <h1>Hechos/procesos del Período</h1>
-                {this.state.item.hechos &&
-                  <div className='list'>
-                    {this.state.item.hechos.map(function (item, index) {
+                {this.state.item.hechos && this.state.item.hechos.locales &&
+                  <div className='list-locales'>
+                    {this.state.item.hechos.locales.map(function (item, index) {
+                        return (
+                          <PeriodoHechoItem key={item.id} item={item} defaultImg='http://emmanozzi.org/public/images/noimage.jpg' />
+                        )
+                      }.bind(this))
+                    }
+                  </div>
+                }
+                {this.state.item.hechos && this.state.item.hechos.nacionales &&
+                  <div className='list-nacionales'>
+                    {this.state.item.hechos.nacionales.map(function (item, index) {
+                        return (
+                          <PeriodoHechoItem key={item.id} item={item} defaultImg='http://emmanozzi.org/public/images/noimage.jpg' />
+                        )
+                      }.bind(this))
+                    }
+                  </div>
+                }
+                {this.state.item.hechos && this.state.item.hechos.internacionales &&
+                  <div className='list-internacionales'>
+                    {this.state.item.hechos.internacionalesº.map(function (item, index) {
                         return (
                           <PeriodoHechoItem key={item.id} item={item} defaultImg='http://emmanozzi.org/public/images/noimage.jpg' />
                         )

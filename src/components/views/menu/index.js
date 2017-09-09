@@ -89,24 +89,6 @@ class Menu extends React.Component {
   }
 
   updatePos(forcedState){
-
-    /*
-    // animation
-    if(forcedState == 'bar'){
-      if(this.state.headerStyle == 'bar' || this.state.headerStyle == 'toBar'){
-        forcedState = 'bar';
-      } else {
-        forcedState = 'toBar';
-      }
-    } else {
-      if(this.state.headerStyle == 'full' || this.state.headerStyle == 'toFull'){
-        forcedState = 'full';
-      } else {
-        forcedState = 'toFull';
-      }
-    }
-    */
-
     this.setState({
      menuPos: forcedState
     });
@@ -117,7 +99,7 @@ class Menu extends React.Component {
       <div id='menu' className={this.state.menuClass+" "+this.state.menuPos} >
         <CloseMenuBtn closeMenu={this.props.closeMenu} />
         <MuseoInfo />
-        <WpMenu url='http://admin.emmanozzi.org' location='museo-menu-location' />
+        <WpMenu url='http://admin.emmanozzi.org' location='main-menu-location' debug={true} />
       </div>
     )
   }

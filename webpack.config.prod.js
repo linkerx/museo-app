@@ -4,8 +4,9 @@ const CompressionPlugin = require('compression-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
+  devtool: 'cheap-module-source-map',
   entry: [
-    'webpack-dev-server/client?http://dev.emmanozzi.org/',
+    'webpack-dev-server/client?http://emmanozzi.org/',
     './src/index.js',
   ],
   output: {
@@ -44,13 +45,39 @@ module.exports = {
       path.resolve('./node_modules')
     ]
   },
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: 'src/index.html'
+  plugins: [new HtmlWebpackPlugin({
+      template: 'src/index.html',
+      minify: {
+        collapseWhitespace: true,
+        collapseInlineTagWhitespace: true,
+        removeComments: true,
+        removeRedundantAttributes: true
+      }
     }),
-    new webpack.DefinePlugin({
-      'lnk_api_host': "'http://admin.emmanozzi.org'",
-      'lnk_api_dir': "'/api'",
-    })
-  ]
+  new webpack.optimize.UglifyJsPlugin({
+      compress: {
+          warnings: false,
+          screw_ie8: true,
+          conditionals: true,
+          unused: true,
+          comparisons: true,
+          sequences: true,
+          dead_code: true,
+          evaluate: true,
+          if_return: true,
+          join_vars: true
+      },
+      output: {
+          comments: false
+      }
+  }),
+  new CompressionPlugin({
+              asset: '[path].gz[query]',
+              algorithm: 'gzip',
+              test: /\.js$|\.css$|\.html$|\.eot?.+$|\.ttf?.+$|\.woff?.+$|\.svg?.+$/,
+              threshold: 10240,
+              minRatio: 0.8
+  })
+
+]
 };

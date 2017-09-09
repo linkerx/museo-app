@@ -33,21 +33,25 @@ class Periodos extends React.Component {
 
     var queries = [
       '_embed',
-      'filter[orderby]=meta_value_num',
-      'filter[meta_key]=inicio',
-      'filter[order]=ASC'
     ];
 
     var opts = {
       url: 'http://admin.emmanozzi.org',
       type: 'periodo',
       queries: queries,
-      debug: true
+      debug: false
     }
 
     WpApi.getList(opts)
       .then(function(items) {
         this.setState(function () {
+
+          items.sort(function(a,b){
+            if(a.inicio < b.inicio) return -1;
+            if(a.inicio > b.inicio) return 1;
+            return 0;
+          });
+
           return {
             items: items,
             listStyle: this.state.listStyle
