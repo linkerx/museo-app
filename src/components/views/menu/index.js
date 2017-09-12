@@ -1,8 +1,8 @@
 var React = require('react');
 var WpMenu = require('wp/menu');
 var CloseMenuBtn = require('./closeMenuBtn');
-var MuseoInfo = require('./museoInfo');
 require('./styles.less');
+require('./items.less');
 
 class Menu extends React.Component {
 
@@ -98,7 +98,6 @@ class Menu extends React.Component {
     return (
       <div id='menu' className={this.state.menuClass+" "+this.state.menuPos} >
         <CloseMenuBtn closeMenu={this.props.closeMenu} />
-        <MuseoInfo />
         <WpMenu url='http://admin.emmanozzi.org' location='main-menu-location' debug={true} />
       </div>
     )

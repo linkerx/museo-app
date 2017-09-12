@@ -6,7 +6,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 module.exports = {
   devtool: 'cheap-module-source-map',
   entry: [
-    'webpack-dev-server/client?http://emmanozzi.org/',
+    'webpack-dev-server/client?http://dev.emmanozzi.org/',
     './src/index.js',
   ],
   output: {
@@ -77,6 +77,10 @@ module.exports = {
               test: /\.js$|\.css$|\.html$|\.eot?.+$|\.ttf?.+$|\.woff?.+$|\.svg?.+$/,
               threshold: 10240,
               minRatio: 0.8
+  }),
+  new webpack.DefinePlugin({
+    'lnk_api_host': "'http://admin.emmanozzi.org'",
+    'lnk_api_dir': "'/api'",
   })
 
 ]
