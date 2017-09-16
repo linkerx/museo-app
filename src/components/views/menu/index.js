@@ -98,7 +98,7 @@ class Menu extends React.Component {
     return (
       <div id='menu' className={this.state.menuClass+" "+this.state.menuPos} >
         <CloseMenuBtn closeMenu={this.props.closeMenu} />
-        <WpMenu url='http://admin.emmanozzi.org' location='main-menu-location' debug={true} />
+        <WpMenu url='http://admin.emmanozzi.org' location='main-menu-location' debug={true} action={this.props.closeMenu} />
       </div>
     )
   }
