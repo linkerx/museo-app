@@ -20,10 +20,14 @@ function ListItem(props) {
     imageSize = props.imageSize;
   }
 
-  if(props.item._embedded && props.item._embedded['wp:featuredmedia']){
-    var item_image = props.item._embedded['wp:featuredmedia'][0].media_details.sizes[imageSize].source_url;
-  } else if(props.defaultImg) {
-    var item_image = props.defaultImg;
+  if(props.item.type != 'attachment'){
+    if(props.item._embedded && props.item._embedded['wp:featuredmedia']){
+      var item_image = props.item._embedded['wp:featuredmedia'][0].media_details.sizes[imageSize].source_url;
+    } else if(props.defaultImg) {
+      var item_image = props.defaultImg;
+    }
+  } else {
+    var item_image = props.item.media_details.sizes[imageSize].source_url;
   }
 
   var activeClass = 'inactive';

@@ -2,9 +2,26 @@
 
 header .menu-trigger {
   position: absolute;
-  right: 1%;
-  top: 1vh;
-  height: 6vh;
+  right: 20px;
+  top: 10px;
+
+  @media @narrow, @super-narrow {
+    right: 10px;
+  }
+}
+
+header .menu-trigger .fa {
+  font-size: 40px;
+}
+
+header.bar .menu-trigger .fa,
+header.tobar .menu-trigger .fa {
+  color: #fff;
+}
+
+header.bar .menu-trigger .fa,
+header.tobar .menu-trigger .fa {
+  color: #333;
 }
 
 header .menu-trigger button {
@@ -15,10 +32,5 @@ header .menu-trigger button {
 }
 
 header .menu-trigger button:hover .fa {
-  color: @color-5;
-}
-
-header .menu-trigger .fa {
-  color: #333;
-  font-size: 6vh;
+  color: #777;
 }

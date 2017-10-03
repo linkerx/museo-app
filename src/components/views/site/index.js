@@ -6,6 +6,7 @@ var WpApi = require('wp/api');
 var WpSiteArchive = require('./archive');
 var WpSitePost = require('./post');
 var WpItem = require('wp/item');
+require('./styles.less');
 
 class WpSite extends React.Component {
 

@@ -92,6 +92,32 @@ class Periodo extends React.Component {
                 }
               });
             }.bind(this));
+
+            var queries_objetos = [
+              '_embed',
+              'filter[periodo]='+item[0].id,
+            ];
+
+            var opts_objetos = {
+              url: 'http://admin.emmanozzi.org',
+              type: 'objeto',
+              queries: queries_objetos,
+              debug: false
+            }
+
+            WpApi.getList(opts_objetos)
+              .then(function(objetos) {
+
+                item[0].objetos = objetos;
+
+                this.setState(function(){
+                  return {
+                    item: item[0],
+                    showFull: this.state.showFull
+                  }
+                });
+              }.bind(this));
+
       }.bind(this));
   }
 
@@ -171,7 +197,12 @@ class Periodo extends React.Component {
               </div>
 
               {this.state.showFull &&
-                <div className='content'>{renderHTML(this.state.item.content.rendered)}</div>
+                <div className='content'>
+                  {renderHTML(this.state.item.content.rendered)}
+                  <div className='show-full-button'>
+                    <button onClick={() => { this.showFull() }}><FontAwesome name={showFullIcon} /> {'(ver '+showFullText+')'} </button>
+                  </div>
+                </div>
               }
 
               <div className='hechos'>
@@ -210,6 +241,16 @@ class Periodo extends React.Component {
 
               <div className='objetos'>
                 <h1>Objetos relacionados con el Período</h1>
+                {this.state.item.objetos &&
+                  <div className='list-objetos'>
+                    {this.state.item.objetos.map(function (item, index) {
+                        return (
+                          <PeriodoHechoItem key={item.id} item={item} defaultImg='http://emmanozzi.org/public/images/noimage.jpg' />
+                        )
+                      }.bind(this))
+                    }
+                  </div>
+                }
               </div>
             </div>
           </article>

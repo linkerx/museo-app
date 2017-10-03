@@ -2,34 +2,62 @@
 
 header .site-title {
     position: absolute;
-    top: 1vh;
-    left: 1%;
-    width: 50%;
-
-    @media @narrow {
-      width:100%;
-    }
+    top: 10px;
+    left: 10px;
+    width: auto;
+    @media @narrow, @super-narrow {
+      left: 0;
+      top: 10px;
+      width: 100%;
+  }
 }
 
 header .site-title .logo {
-    float:left;
+    position:absolute;
+    top:0;
+    left:10px;
 }
 
 header .site-title .logo img {
-    height: 6vh;
-    margin-top:0vh;
-    /* filter: drop-shadow(1px 1px 5px #000); */
+    height: 40px;
+
+    @media @narrow, @super-narrow {
+      height: 40px;
+    }
 }
 
 header .site-title .title {
-    float:left;
-    margin-left:12px;
+    position:absolute;
+    left: 55px;
+    top: 5px;
+    width:500px;
+
+    @media @narrow, @super-narrow {
+      left:0;
+      width: 100%;
+      position: absolute;
+      text-align: center;
+      margin:0;
+    }
 }
 
 header .site-title .title a {
-    font-size: 3vh;
-    /* text-shadow: 1px 1px 5px #000; */
+    font-size: 14px;
     font-weight: bold;
+    margin:0;
+    line-height: 14px;
+}
+
+header.bar .site-title .title div,
+header.tobar .site-title .title div {
+  font-size: 14px;
+  height: 14px;
+  line-height: 14px;
+  margin-top:3px;
+}
+
+header.bar .site-title .title .bapro,
+header.tobar .site-title .title .bapro {
 }
 
 header .site-title .title .bapro a {
@@ -38,12 +66,58 @@ header .site-title .title .bapro a {
 
 header .site-title .title .emma a {
     color: #333;
+    font-size: 16px;
+
 }
 
 header .site-title .title a:hover {
     color: @color-5;
 }
 
-header .site-title .title .bapro {
-    margin-top:0.3vh;
+/* PANTALLA PRINCIPAL */
+
+header.full .site-title,
+header.tofull .site-title {
+  width:100%;
+}
+
+header.full .site-title .title,
+header.tofull .site-title .title {
+  top: 15vh;
+  width: 100%;
+  @media @narrow, @super-narrow {
+    top:10vh;
+    left:0;
+  }
+}
+
+header.full .site-title .title div,
+header.tofull .site-title .title div {
+  width:100%;
+}
+
+header.full .site-title .title .emma a,
+header.tofull .site-title .title .emma a {
+  font-size:3.5em;
+
+  @media @square {
+    font-size:3em;
+  }
+
+  @media @narrow, @super-narrow {
+    font-size: 2em;
+  }
+}
+
+header.full .site-title .title .bapro a,
+header.tofull .site-title .title .bapro a {
+  font-size:3em;
+  line-height: normal;
+  @media @square {
+    font-size:2.5em;
+  }
+
+  @media @narrow, @super-narrow {
+    font-size: 1.5em;
+  }
 }

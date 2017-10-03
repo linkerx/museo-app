@@ -1,30 +1,43 @@
-header.bar {
+@import (reference) "common/default.less";
+
+/*
+
+.fullHeader {
+  position: absolute;
+  left: 10%;
+  top:0;
+  width: 80%;
+  height: 100vh;
+  border-radius: 0 0 0.5vh 0.5vh;
+  background-color: rgba(255,255,255,0.7);
+  border: 1px solid #ddd;
+  z-index:20;
+
+  @media @narrow, @super-narrow {
+    top:0;
+    left:0;
+    width:100%;
+    height: 8vh;
+    position:fixed;
+      box-shadow: 0px 0px 3px #aaa;
+  }
+}
+
+.barHeader {
   position: fixed;
   width: 100%;
-  height: 8vh;
+  height: 60px;
   background-color: #fff;
   box-shadow: 0px 0px 3px #aaa;
   z-index:20;
 }
 
 header.full {
-  position: absolute;
-  left: 10%;
-  top:10vh;
-  width: 80%;
-  height: 8vh;
-  background-color: #fff;
-  z-index:20;
+  .fullHeader;
 }
 
 header.tofull {
-  position: absolute;
-  left: 10%;
-  top:10vh;
-  width: 80%;
-  height: 8vh;
-  background-color: #fff;
-  z-index:20;
+  .fullHeader;
 
   -webkit-animation: toTheFull 0.5s ease forwards;
   animation: toTheFull 0.5s ease forwards;
@@ -33,30 +46,35 @@ header.tofull {
   animation-fill-mode: forwards;
 }
 
+header.bar {
+  .barHeader;
+}
+
 header.tobar {
-  position: fixed;
-  width: 100%;
-  height: 8vh;
-  backgroundto-color: #fff;
-  z-index:20;
+  .barHeader;
 
   -webkit-animation: toTheBar 0.5s ease forwards;
   animation: toTheBar 0.5s ease forwards;
 
   -webkit-animation-fill-mode: forwards;
   animation-fill-mode: forwards;
+
+  @media @narrow, @super-narrow {
+    animation: none;
+    box-shadow: 0px 0px 3px #aaa;
+  }
 }
 
 @keyframes toTheBar {
     0% {
       width: 80%;
       left: 10%;
-      top: 10vh;
+      height:18vh;
     }
     99% {
       width:100%;
       left:0;
-      top:0;
+      height:8vh;
       box-shadow: none;
     }
     100% {
@@ -68,12 +86,12 @@ header.tobar {
     0% {
       width: 80%;
       left: 10%;
-      top: 10vh;
+      height:18vh;
     }
     99% {
       width:100%;
       left:0;
-      top:0;
+      height:8vh;
       box-shadow: none;
     }
     100% {
@@ -85,7 +103,7 @@ header.tobar {
     0% {
       width:100%;
       left:0;
-      top:0;
+      height:8vh;
     }
     1% {
       box-shadow: none;
@@ -93,14 +111,14 @@ header.tobar {
     100% {
       width: 80%;
       left: 10%;
-      top: 10vh;
+      height:18vh;
     }
 }
 @-webkit-keyframes toTheFull {
     0% {
       width:100%;
       left:0;
-      top:0;
+      height:8vh;
     }
     1% {
       box-shadow: none;
@@ -108,6 +126,25 @@ header.tobar {
     100% {
       width: 80%;
       left: 10%;
-      top: 10vh;
+      height:18vh;
     }
+}
+
+*/
+header {
+  position: fixed;
+  width: 100%;
+  height: 60px;
+  z-index:20;
+}
+
+header.full,
+header.tofull {
+  background-color: transparent;
+}
+
+header.bar,
+header.tobar {
+  background-color: #fff;
+  box-shadow: 0px 0px 3px #aaa;
 }

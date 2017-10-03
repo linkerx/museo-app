@@ -42,8 +42,7 @@ class App extends React.Component {
     })
   }
 
-  closeMenu(e){
-    e.preventDefault();
+  closeMenu(){
     this.setState({
       menuOpen: false
     })

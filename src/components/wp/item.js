@@ -4,7 +4,6 @@ var WpItemTitle = require('./item-title');
 var WpItemImage = require('./item-image');
 var renderHTML = require('react-render-html');
 
-
 class WpItem extends React.Component {
 
   constructor(props) {

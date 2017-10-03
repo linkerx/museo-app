@@ -1,17 +1,58 @@
 @import (reference) "common/default.less";
 
 section#home-calendario {
-    z-index:22;
-    height: 80vh;
+    z-index: 23;
+    height: 800px;
+    background-color: #eee;
+
+    @media @narrow, @super-narrow {
+      height:1200px;
+    }
 }
 
 section#home-calendario .calendar-container {
   position: absolute;
-  top: 3vh;
-  left: 25%;
+  top: 0;
+  right: 5%;
   width: 70%;
-  height:70vh;
+  height: 500px;
   overflow: hidden;
+  @media @narrow, @super-narrow {
+    top:400px;
+    left:5%;
+    width:90%;
+  }
+}
+
+section#home-calendario .calendar-container h1 {
+  position: absolute;
+  top: 20px;
+  width: 100%;
+  color: #333;
+  font-weight: normal;
+  font-size: 1.8em;
+  text-align: center;
+  border: 0;
+}
+
+section#home-calendario .calendar-container .rbc-calendar {
+  top: 70px;
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+section#home-calendario .calendar-container .rbc-toolbar,
+section#home-calendario .calendar-container .rbc-toolbar button {
+  font-size:14px;
+  @media @square {
+    font-size:12px;
+  }
+  @media @narrow, @super-narrow {
+    font-size: 12px;
+    padding: 5px;
+  }
 }
 
 section#home-calendario .calendar-container .rbc-month-view {
@@ -30,52 +71,79 @@ section#home-calendario .calendar-container .rbc-day-bg + .rbc-day-bg {
     border-left: 1px solid #999;
 }
 
+section#home-calendario .calendar-container .rbc-date-cell {
+  font-size: 10px;
+  padding: 5px;
+}
+
 
 section#home-calendario .day-container {
   position: absolute;
-  top: 3vh;
-  left: 3%;
-  border: 1px solid #999;
-  width: 20%;
-  height: 50vh;
+  top: 70px;
+  left: 5%;
+  border: 1px solid #aaa;
+  width: 15%;
+  height: 300px;
   border-radius: 1vh;
+
+  background-color: #fff;
+  box-shadow: 5px 5px 5px 0px #aaa;
+
+  @media @narrow {
+    left: 30%;
+    width: 40%;
+    height: 220px;
+  }
+
+  @media @super-narrow {
+    left:15%;
+    width:70%;
+    height:220px;
+  }
 }
 
 section#home-calendario .day-container .year {
   position: absolute;
-  top: 2vh;
-  left:50%;
+  top: 10px;
+  right:10px;
   width: 50%;
-  height: 5vh;
-  text-align: center;
-  font-size: 4vh;
+  text-align: right;
+  font-size: 1.4em;
+
+  @media @square {
+    font-size: 1.2em;
+  }
 }
 
 section#home-calendario .day-container .month {
   position: absolute;
-  top: 2vh;
-  left: 0;
+  top: 10px;
+  left:10px;
   width: 50%;
-  height: 5vh;
-  text-align: center;
-  font-size: 4vh;
+  text-align: left;
+  font-size: 1.4em;
+
+  @media @square {
+    font-size: 1.2em;
+  }
 }
 
 section#home-calendario .day-container .day {
   position: absolute;
-  top: 10vh;
+  top: 55px;
   width: 100%;
   text-align: center;
-  font-size: 4vh;
+  font-size: 2em;
   font-style: italic;
 }
 
 section#home-calendario .day-container .number {
   position: absolute;
-  top: 20vh;
+  top: 105px;
   width: 100%;
   text-align: center;
-  font-size: 14vh;
+  font-size: 4.5em;
+  font-weight: 500;
 }
 
 section#home-calendario .day-container .event {
@@ -84,4 +152,27 @@ section#home-calendario .day-container .event {
   width: 100%;
   text-align: center;
   font-size: 2.5vh;
+}
+
+section#home-calendario .day-efemerides {
+  position: absolute;
+  top: 400px;
+  left: 0;
+  width: 25%;
+
+  @media @narrow, @super-narrow {
+    top:0;
+    width:100%;
+  }
+}
+
+section#home-calendario .day-efemerides h1 {
+  position: absolute;
+  top: 20px;
+  width: 100%;
+  color: #333;
+  font-weight: normal;
+  font-size: 1.8em;
+  text-align: center;
+  border: 0;
 }
