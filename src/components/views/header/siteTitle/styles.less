@@ -12,18 +12,23 @@ header .site-title {
   }
 }
 
-header .site-title .logo {
+header .site-title .logo{
     position:absolute;
     top:0;
     left:10px;
-}
-
-header .site-title .logo img {
+    background-image: url('/public/assets/images/bp.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
     height: 40px;
-
+    width: 31px;
+    cursor:pointer;
     @media @narrow, @super-narrow {
       height: 40px;
     }
+}
+
+header .site-title .logo:hover {
+  filter: brightness(80%);
 }
 
 header .site-title .title {
@@ -81,13 +86,33 @@ header.tofull .site-title {
   width:100%;
 }
 
+header.full .site-title .logo,
+header.tofull .site-title .logo {
+    background-image: url('/public/assets/images/bp_blanco.png');
+}
+
 header.full .site-title .title,
 header.tofull .site-title .title {
-  top: 15vh;
+  top: 20vh;
   width: 100%;
   @media @narrow, @super-narrow {
     top:10vh;
     left:0;
+  }
+}
+
+header.full.menu-opened .site-title .title,
+header.tofull.menu-opened .site-title .title {
+  top: 100px;
+  left: 10%;
+
+  @media @square {
+    left: 5%;
+  }
+
+  @media @narrow, @super-narrow {
+    top: 50px;
+    left: 0;
   }
 }
 
@@ -99,7 +124,7 @@ header.tofull .site-title .title div {
 header.full .site-title .title .emma a,
 header.tofull .site-title .title .emma a {
   font-size:3.5em;
-
+  color: #fff;
   @media @square {
     font-size:3em;
   }
@@ -113,6 +138,7 @@ header.full .site-title .title .bapro a,
 header.tofull .site-title .title .bapro a {
   font-size:3em;
   line-height: normal;
+  color: #ddd;
   @media @square {
     font-size:2.5em;
   }

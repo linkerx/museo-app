@@ -53,7 +53,7 @@ class App extends React.Component {
       <Router history={Piwik.connectToHistory(history)}>
         <div className='main'>
           <Route path='/' render={ function(props) { return ( <Menu {...props} open={this.state.menuOpen} closeMenu={this.closeMenu} /> ) }.bind(this) } />
-          <Route path='/' render={ function(props) { return ( <Header {...props} openMenu={this.openMenu} /> ) }.bind(this) } />
+          <Route path='/' render={ function(props) { return ( <Header {...props} menuOpen={this.state.menuOpen} openMenu={this.openMenu} /> ) }.bind(this) } />
           <div id='main-wrapper'>
             <Switch>
               <Route exact path='/' component={Home} />

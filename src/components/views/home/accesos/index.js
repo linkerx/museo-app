@@ -1,7 +1,6 @@
 var React = require('react');
 var Link = require('react-router-dom').Link;
 require('./styles.less');
-var Image = require('./noimage.jpg');
 var WpItemImage = require('wp/item-image');
 
 function Accesos () {
@@ -10,19 +9,25 @@ function Accesos () {
     <h1>Explorá nuestra historia</h1>
     <ul className='secciones'>
       <li>
-        <WpItemImage src={Image} render='back'/>
-        <h2><Link to='/periodos'>Periodos</Link></h2>
-        <span>Los periodos en la historia de Patagones son etapas marcadas por el cambio de circunstancias político económicas.</span>
+        <Link to='/periodos'>
+          <WpItemImage src='/public/assets/images/periodos.jpg' render='back'/>
+          <h2>Periodos</h2>
+          <span>Los periodos en la historia de Patagones son etapas marcadas por el cambio de circunstancias político económicas.</span>
+        </Link>
       </li>
       <li>
-        <WpItemImage src={Image} render='back'/>
-        <h2><Link to='/topicos'>Topicos</Link></h2>
-        <span>En los tópicos encontramos temas puntuales de nuestra historia, temas que despiertan curiosidad e interés general.</span>
+        <Link to='/topicos'>
+          <WpItemImage src='/public/assets/images/topicos.jpg' render='back'/>
+          <h2>Topicos</h2>
+          <span>En los tópicos encontramos temas puntuales de nuestra historia, temas que despiertan curiosidad e interés general.</span>
+        </Link>
       </li>
       <li>
-        <WpItemImage src={Image} render='back'/>
-        <h2><Link to='/escuela'>Escuela</Link></h2>
-        <span>Este es un lugar destinado para alumnos y docentes, lleno de actividades y propuestas para las escuelas de la región.</span>
+        <Link to='/escuela'>
+          <WpItemImage src='/public/assets/images/escuela.jpg' render='back'/>
+          <h2>Escuela</h2>
+          <span>Este es un lugar destinado para alumnos y docentes, lleno de actividades y propuestas para las escuelas de la región.</span>
+        </Link>
       </li>
     </ul>
     </section>

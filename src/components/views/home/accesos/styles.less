@@ -3,10 +3,10 @@
 section#home-accesos {
   z-index:22;
   position:relative;
-  height:400px;
+  height:370px;
   background-color: #fff;
   @media @narrow, @super-narrow {
-    height: 1000px;
+    height: 810px;
   }
 }
 
@@ -43,17 +43,16 @@ section#home-accesos ul.secciones {
 }
 
 section#home-accesos ul.secciones li{
-    width: 33.3%;
+    width: 33.33%;
     height: 300px;
     text-align:center;
     position:relative;
-    border-right:1px solid #aaa;
 
     @media @narrow, @super-narrow {
-      width:80%;
+      width:100%;
       margin: auto;
       border:0;
-      height:300px;
+      height:250px;
     }
 }
 
@@ -62,6 +61,7 @@ section#home-accesos ul.secciones li .image_container {
     width:100%;
     height:100%;
     z-index:20;
+    background-color: #000;
 }
 
 section#home-accesos ul.secciones li .image {
@@ -70,6 +70,12 @@ section#home-accesos ul.secciones li .image {
     height:100%;
     background-position: center;
     background-size: cover;
+    filter: opacity(60%) blur(2px);
+    z-index:23;
+
+    @media @narrow, @super-narrow {
+      filter: opacity(90%) blur(0);
+    }
 }
 
 section#home-accesos ul.secciones li .img a {
@@ -78,9 +84,10 @@ section#home-accesos ul.secciones li .img a {
     height:100%;
 }
 
-section#home-accesos ul.secciones li:hover .img {
-    transform: scale(1.1);
+section#home-accesos ul.secciones li:hover .image {
     cursor: pointer;
+    filter: opacity(80%) blur(0);
+    z-index:24;
 }
 
 section#home-accesos ul.secciones li h2 {
@@ -89,15 +96,14 @@ section#home-accesos ul.secciones li h2 {
     position:absolute;
     width:100%;
     top:20px;
-}
-
-section#home-accesos ul.secciones li h2 a{
-    color:#333;
+    color:#ccc;
     font-size: 2em;
-}
 
-section#home-accesos ul.secciones li:hover h2 a{
-    color: #036f3b;
+    @media @narrow, @super-narrow {
+      color: #fff;
+      text-shadow: 2px 2px 1px #000, 2px 2px 3px #000;
+      font-size: 2.5em;
+    }
 }
 
 section#home-accesos ul.secciones li span {
@@ -108,4 +114,17 @@ section#home-accesos ul.secciones li span {
     bottom:20px;
     left:5%;
     font-size:1.2em;
+    color: #ccc;
+
+    @media @narrow, @super-narrow {
+      color: #fff;
+      text-shadow: 2px 2px 1px #000, 2px 2px 3px #000;
+      font-size: 1.5em;
+    }
+}
+
+section#home-accesos ul.secciones li:hover h2,
+section#home-accesos ul.secciones li:hover span{
+    color: #fff;
+    text-shadow: 2px 2px 1px #000, 2px 2px 3px #000;
 }

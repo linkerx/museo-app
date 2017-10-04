@@ -13,8 +13,14 @@ class Header extends React.Component {
         headerStyle='full';
       }
 
+      var menuClass = 'menu-closed';
+      if(props.menuOpen){
+        menuClass = 'menu-opened';
+      }
+
       this.state = {
-        style: headerStyle
+        style: headerStyle,
+        menuClass: menuClass
       }
 
       this.handleScroll = this.handleScroll.bind(this);
@@ -32,8 +38,19 @@ class Header extends React.Component {
         this.updateBar('bar');
       }
     }
-  }
 
+    if(prevProps.menuOpen != this.props.menuOpen){
+
+      var menuClass = 'menu-closed';
+      if(this.props.menuOpen){
+        menuClass = 'menu-opened';
+      }
+
+      this.setState({
+        menuClass: menuClass
+      });
+    }
+  }
   componentDidMount() {
     //console.log("mountTo: "+this.props.location.pathname);
     if(this.props.location.pathname == "/"){
@@ -95,9 +112,8 @@ class Header extends React.Component {
 
 
   render(){
-
     return(
-      <header className={this.state.style}>
+      <header className={this.state.style+" "+this.state.menuClass}>
         <SiteTitle />
         <MenuTrigger openMenu={this.props.openMenu} />
       </header>
