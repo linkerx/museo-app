@@ -2,10 +2,16 @@
 
 section#home-inicio {
     z-index: 21;
-    height:50vh;
+    height:230px;
+
+    background-color: #fff;
+
+    @media @square {
+      height: 220px;
+    }
 
     @media @narrow, @super-narrow {
-      height:60vh;
+      height:200px;
     }
 }
 

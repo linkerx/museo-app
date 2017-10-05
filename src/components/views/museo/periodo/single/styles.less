@@ -1,3 +1,5 @@
+@import (reference) "common/default.less";
+
 #periodo {
   position:relative;
 }
@@ -53,8 +55,20 @@
 
 #periodo article .post-content {
   width: 90%;
-  margin-left: 5%;
-  margin-top: 3vh;
+  margin:auto;
+  margin-top: 20px;
+  @media @super-wide {
+    width: 1200px;
+  }
+
+  @media @wide {
+    width: 1000px;
+  }
+
+  @media @square, @narrow, @super-narrow {
+    width:90%;
+  }
+
 }
 
 #periodo article .post-content .show-full-button button{

@@ -13,8 +13,11 @@ function SiteTitle() {
             <Link to='/' title="Museo Emma Nozzi">Museo Emma Nozzi</Link>
         </div>
         <div className="bapro">
-            <Link to="http://museobancoprovincia.com" target="_blank">Museo del Banco Provincia</Link>
+            <Link to="http://museobancoprovincia.com" target="_blank">Banco Provincia de Buenos Aires</Link>
         </div>
+      </div>
+      <div className="subtitle">
+        Carmen de Patagones, Buenos Aires, Argentina
       </div>
     </div>
   )

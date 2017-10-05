@@ -33,7 +33,7 @@ header .site-title .logo:hover {
 
 header .site-title .title {
     position:absolute;
-    left: 55px;
+    left: 50px;
     top: 5px;
     width:500px;
 
@@ -66,7 +66,7 @@ header.tobar .site-title .title .bapro {
 }
 
 header .site-title .title .bapro a {
-    color: @color-3;
+    color: @color-4;
 }
 
 header .site-title .title .emma a {
@@ -88,30 +88,102 @@ header.tofull .site-title {
 
 header.full .site-title .logo,
 header.tofull .site-title .logo {
-    background-image: url('/public/assets/images/bp_blanco.png');
+    background-image: url('/public/assets/images/bp.png');
+    top:70px;
+    height: 72px;
+    width: 60px;
+    left: 46px;
+
+    @media @square {
+      height: 62px;
+      width: 53px;
+    }
+
+    @media @narrow, @super-narrow {
+      top:0;
+      left:10px;
+      height: 40px;
+      width: 31px;
+    }
 }
 
-header.full .site-title .title,
-header.tofull .site-title .title {
-  top: 20vh;
-  width: 100%;
+header.full.menu-opened .site-title,
+header.tofull.menu-opened .site-title {
+  left:8%;
+
+  @media @square {
+    left: 2%;
+  }
+
   @media @narrow, @super-narrow {
-    top:10vh;
     left:0;
   }
 }
 
-header.full.menu-opened .site-title .title,
-header.tofull.menu-opened .site-title .title {
-  top: 100px;
-  left: 10%;
+header.full .site-title .title,
+header.tofull .site-title .title {
+  top: 88px;
+  left: 120px;
+  width: 100%;
 
   @media @square {
-    left: 5%;
+    left: 112px;
   }
 
   @media @narrow, @super-narrow {
-    top: 50px;
+    top: 80px;
+    left:0;
+  }
+}
+
+header.full .site-title .subtitle,
+header.tofull .site-title .subtitle {
+  position: absolute;
+  top: 156px;
+  left: 49px;
+  width: 560px;
+  padding-top: 10px;
+  border-top: 1px solid #ccc;
+  font-size: 25px;
+  color: #aaa;
+
+  @media @square {
+    top:145px;
+    padding-top: 7px;
+    font-size:20px;
+  }
+
+  @media @narrow, @super-narrow {
+    top: 130px;
+    left: 10%;
+    width: 80%;
+    text-align:center;
+    font-size: 18px;
+    padding-top: 5px;
+  }
+}
+
+header.full.menu-opened .site-title .subtitle,
+header.tofull.menu-opened .site-title .subtitle {
+  display:none;
+}
+
+header.bar .site-title .subtitle,
+header.tobar .site-title .subtitle {
+  display:none;
+}
+
+header.full.menu-opened .site-title .title,
+header.tofull.menu-opened .site-title .title {
+  top: 88px;
+  left: 120px;
+
+  @media @square {
+    left: 120px;
+  }
+
+  @media @narrow, @super-narrow {
+    top: 40px;
     left: 0;
   }
 }
@@ -123,10 +195,10 @@ header.tofull .site-title .title div {
 
 header.full .site-title .title .emma a,
 header.tofull .site-title .title .emma a {
-  font-size:3.5em;
-  color: #fff;
+  font-size:37px;
+  color: #555;
   @media @square {
-    font-size:3em;
+    font-size:32px;
   }
 
   @media @narrow, @super-narrow {
@@ -136,14 +208,15 @@ header.tofull .site-title .title .emma a {
 
 header.full .site-title .title .bapro a,
 header.tofull .site-title .title .bapro a {
-  font-size:3em;
+  font-size:32px;
   line-height: normal;
-  color: #ddd;
+  color: @color-4;
   @media @square {
-    font-size:2.5em;
+    font-size:25px;
   }
 
   @media @narrow, @super-narrow {
     font-size: 1.5em;
+    line-height: 1.4em;
   }
 }
