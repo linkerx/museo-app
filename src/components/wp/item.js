@@ -33,7 +33,8 @@ class WpItem extends React.Component {
       debug: this.props.debug
     }
 
-    console.log(opts);
+    if(this.props.debug)
+      console.log(opts);
 
     WpApi.getItem(opts)
       .then(function(item){

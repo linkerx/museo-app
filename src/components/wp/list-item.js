@@ -1,6 +1,10 @@
 var React = require('react');
 var ItemTitle = require('./item-title');
 var ItemImage = require('./item-image');
+var renderHTML = require('react-render-html');
+
+import moment from 'moment';
+moment.locale('es');
 
 function ListItem(props) {
 
@@ -38,6 +42,8 @@ function ListItem(props) {
     <article className={activeClass}>
       <ItemTitle title={props.item.title.rendered} linkTo={'/'+props.item.type+'/'+props.item.slug} />
       <ItemImage render={imageRender} src={item_image} />
+      <div className='date'>{moment(props.item.date).format('DD/MM/YYYY')}</div>
+      <div className='excerpt'>{renderHTML(props.item.excerpt.rendered)}</div>
     </article>
   )
 }

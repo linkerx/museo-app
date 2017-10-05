@@ -3,6 +3,7 @@ var Inicio = require('./inicio');
 var Accesos = require('./accesos');
 var Calendario = require('./calendario');
 var Separador = require('./separador');
+var Novedades = require('./novedades');
 var Info = require('./info');
 
 require('./parallax.less');
@@ -13,7 +14,8 @@ function Home(){
       <Inicio />
       <Accesos />
       <Calendario />
-      <Separador />
+      {/*<Separador />*/}
+      <Novedades />
       <Info />
     </section>
   )
