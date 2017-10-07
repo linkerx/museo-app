@@ -3,6 +3,7 @@ var WpApi = require('./api');
 var WpItemTitle = require('./item-title');
 var WpItemImage = require('./item-image');
 var renderHTML = require('react-render-html');
+var serialize = require('form-serialize');
 
 class WpItem extends React.Component {
 
@@ -12,10 +13,53 @@ class WpItem extends React.Component {
       item: null
     }
     this.updateItem = this.updateItem.bind(this);
+    this.formSubmit = this.formSubmit.bind(this);
   }
 
   componentDidMount(){
     this.updateItem();
+  }
+
+  componentDidUpdate(){
+
+    var form = document.getElementsByClassName('wpcf7-form')[0];
+    if(form){
+      console.log(form);
+
+      /**
+       * FORM SUBMISSION
+       */
+      var idInput = document.querySelector('.wpcf7-form input[name=_wpcf7]').value;
+      form.addEventListener('submit',function(e){
+        e.preventDefault();
+        var data = serialize(form);
+        this.formSubmit(idInput,data);
+      }.bind(this));
+
+      /**
+       * INPUTS HANDLE
+       */
+       var inputs = form.getElementsByTagName('input');
+
+       inputs.map(function(item,index){
+         console.log(item);
+       })
+
+       inputs.addEventListener('click',function(e){
+         alert(this.value);
+       });
+
+       console.log(inputs);
+
+       return false;
+   }
+  }
+
+  formSubmit(id,data){
+    WpApi.postContactForm(id,data,{debug:true})
+      .then(function(response){
+        console.log(response);
+      });
   }
 
   updateItem(){
@@ -39,10 +83,43 @@ class WpItem extends React.Component {
     WpApi.getItem(opts)
       .then(function(item){
         this.setState(function(){
+
+          var content = item[0].content.rendered;
+          var htmlObject = document.createElement('div');
+          htmlObject.innerHTML = content;
+          var form = htmlObject.getElementsByClassName('wpcf7-form')[0];
+
+          if(form){
+            form.action = '';
+            form.method = 'post';
+            //var submitInput = htmlObject.querySelector('.wpcf7-form .wpcf7-submit');
+
+    /*
+
+            form.addEventListener('submit',function(e){
+              alert("prueba")
+              e.preventDefault();
+              this.formSubmit(idInput,data);
+              return false;
+            }.bind(this),false);
+
+
+            //form.setAttribute('onsubmit', function(){this.formSubmit(idInput,data)});
+
+            */
+          }
+
+          htmlObject.getElementsByClassName('wpcf7-form')[0].innerHTML = form.innerHTML;
+
+          item[0].content.parsed = htmlObject.outerHTML;
+
+          //var form = htmlObject.getElementsByClassName('wpcf7-form')[0];
+//          console.log(form);
+
           return {
             item: item[0]
           }
-        });
+        }.bind(this));
       }.bind(this));
   }
 
@@ -66,7 +143,7 @@ class WpItem extends React.Component {
             {!this.state.type == 'page' &&
               <div className='excerpt'>{renderHTML(this.state.item.excerpt.rendered)}</div>
             }
-            <div className='content'>{renderHTML(this.state.item.content.rendered)}</div>
+            <div className='content'>{renderHTML(this.state.item.content.parsed)}</div>
 
           </div>
         }
