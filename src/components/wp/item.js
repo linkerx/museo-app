@@ -10,7 +10,7 @@ class WpItem extends React.Component {
   constructor(props) {
     super();
     this.state = {
-      item: null
+      item: null,
     }
     this.updateItem = this.updateItem.bind(this);
     this.formSubmit = this.formSubmit.bind(this);
@@ -21,10 +21,8 @@ class WpItem extends React.Component {
   }
 
   componentDidUpdate(){
-
     var form = document.getElementsByClassName('wpcf7-form')[0];
     if(form){
-      console.log(form);
 
       /**
        * FORM SUBMISSION
@@ -34,24 +32,8 @@ class WpItem extends React.Component {
         e.preventDefault();
         var data = serialize(form);
         this.formSubmit(idInput,data);
+        return false;
       }.bind(this));
-
-      /**
-       * INPUTS HANDLE
-       */
-       var inputs = form.getElementsByTagName('input');
-
-       inputs.map(function(item,index){
-         console.log(item);
-       })
-
-       inputs.addEventListener('click',function(e){
-         alert(this.value);
-       });
-
-       console.log(inputs);
-
-       return false;
    }
   }
 
@@ -74,7 +56,7 @@ class WpItem extends React.Component {
       type: this.props.type,
       slug: this.props.slug,
       queries: ['_embed'],
-      debug: this.props.debug
+      debug: this.props.true
     }
 
     if(this.props.debug)
@@ -91,30 +73,11 @@ class WpItem extends React.Component {
 
           if(form){
             form.action = '';
-            form.method = 'post';
-            //var submitInput = htmlObject.querySelector('.wpcf7-form .wpcf7-submit');
-
-    /*
-
-            form.addEventListener('submit',function(e){
-              alert("prueba")
-              e.preventDefault();
-              this.formSubmit(idInput,data);
-              return false;
-            }.bind(this),false);
-
-
-            //form.setAttribute('onsubmit', function(){this.formSubmit(idInput,data)});
-
-            */
+            htmlObject.querySelector('.wpcf7-form input.wpcf7-form-control').removeAttribute('value');
           }
 
           htmlObject.getElementsByClassName('wpcf7-form')[0].innerHTML = form.innerHTML;
-
           item[0].content.parsed = htmlObject.outerHTML;
-
-          //var form = htmlObject.getElementsByClassName('wpcf7-form')[0];
-//          console.log(form);
 
           return {
             item: item[0]
