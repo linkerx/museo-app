@@ -70,15 +70,15 @@ class WpItem extends React.Component {
           var htmlObject = document.createElement('div');
           htmlObject.innerHTML = content;
           var form = htmlObject.getElementsByClassName('wpcf7-form')[0];
-
           if(form){
             form.action = '';
-            htmlObject.querySelector('.wpcf7-form input.wpcf7-form-control').removeAttribute('value');
+            var inputs = htmlObject.querySelectorAll('.wpcf7-form .wpcf7-form-control');
+            for(var x=0;x<inputs.length;x++){
+                inputs[x].removeAttribute('value');
+            }
+            htmlObject.getElementsByClassName('wpcf7-form')[0].innerHTML = form.innerHTML;
           }
-
-          htmlObject.getElementsByClassName('wpcf7-form')[0].innerHTML = form.innerHTML;
           item[0].content.parsed = htmlObject.outerHTML;
-
           return {
             item: item[0]
           }
@@ -93,6 +93,16 @@ class WpItem extends React.Component {
       }
     }
 
+    var heading = 1;
+    if(this.props.heading){
+      heading = this.props.heading
+    }
+
+    var show_title = true;
+    if(typeof this.props.show_title === 'boolean' && this.props.show_title === false){
+      show_title = false;
+    }
+
     return (
       <article>
         {!this.state.item
@@ -100,7 +110,8 @@ class WpItem extends React.Component {
           this.props.children
           :
           <div className='post_content'>
-            <WpItemTitle linkTo='#' title={this.state.item.title.rendered}/>
+            {show_title && <WpItemTitle linkTo='#' title={this.state.item.title.rendered} heading={heading} />}
+
             {item_image && <WpItemImage src={item_image} render='img'/>}
 
             {!this.state.type == 'page' &&

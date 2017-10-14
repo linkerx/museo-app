@@ -1,0 +1,63 @@
+@import (reference) "common/default.less";
+
+#site-archive {
+  min-height: 78vh;
+  position: relative;
+  padding-bottom: 20px;
+  padding-top: 80px;
+}
+
+#site-archive h1 {
+  left:5%;
+  width:90%;
+  margin:auto;
+  margin-bottom: 10px;
+  clear:both;
+}
+
+#site-archive .list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+
+  left:5%;
+  width:90%;
+  margin:auto;
+}
+
+#site-archive .list article {
+  width: 21%;
+
+  @media @wide {
+    width: 30%;
+  }
+
+  @media @square {
+    width: 42%;
+  }
+
+  @media @narrow, @super-narrow {
+    width: 90%;
+  }
+}
+
+#site-archive .list article h2 {
+  font-size: 1.3em;
+}
+
+#site-archive .list article .image_container{
+  height: 250px;
+  margin-bottom:10px;
+}
+
+#site-archive .list article .image_container .image {
+  height: 250px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+#site-archive .list article .date {
+  margin-bottom: 10px;
+  text-align: right;
+}

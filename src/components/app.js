@@ -19,9 +19,9 @@ var Topico = require('./views/museo/topico/single');
 var Hecho = require('./views/museo/hecho');
 var Ejes = require('./views/museo/escuela/list');
 var Eje = require('./views/museo/escuela/single');
-var WpSite = require('./views/site');
-
 require('./app.less');
+
+var WpSite = require('wp/site');
 
 class App extends React.Component {
 
@@ -64,7 +64,7 @@ class App extends React.Component {
               <Route exact path='/proceso/:slug' component={Hecho} />
               <Route exact path='/escuela' component={Ejes} />
               <Route exact path='/escuela/eje/:slug' component={Eje} />
-              <Route path='/:slug' render={ function(props) { return ( <WpSite {...props} /> ) }.bind(this) } />
+              <Route path='/:slug1/:slug2?/:slug3?' render={ function(props) { return ( <WpSite {...props} /> ) }.bind(this) } />
             </Switch>
           </div>
           <Route path='/' render={ function(props) { return ( <Footer {...props} /> ) }.bind(this) } />

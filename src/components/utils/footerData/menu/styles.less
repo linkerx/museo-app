@@ -1,0 +1,101 @@
+@import (reference) "common/default.less";
+
+.footer-data .footer-menu.opened {
+  height: auto;
+  padding-bottom: 20px;
+  -webkit-animation: fadeIn 0.5s;
+  animation: fadeIn 0.5s;
+
+  @media @narrow, @super-narrow {
+    height: auto;
+    bottom: 20px;
+  }
+}
+
+.footer-data .footer-menu.closed {
+  -webkit-animation: fadeOut 0.5s;
+  animation: fadeOut 0.5s;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+}
+
+.footer-data .footer-menu {
+  position: fixed;
+  top: 80px;
+  left: 10%;
+  width: 80%;
+  margin:auto;
+  background-color: #fff;
+  z-index: 30;
+  overflow: hidden;
+  border-radius: 0.5vh;
+  border:1px solid #ccc;
+  box-shadow: 1px 1px 3px #aaa;
+
+  @media @square, @narrow, @super-narrow {
+    left: 5%;
+    width: 90%;
+    overflow-y: auto;
+  }
+}
+
+@-webkit-keyframes fadeIn {
+    from { opacity: 0; }
+      to { opacity: 1; }
+}
+@keyframes fadeIn {
+    from { opacity: 0; }
+      to { opacity: 1; }
+}
+
+@-webkit-keyframes fadeOut {
+    0% {
+      opacity: 1;
+      height:20vh;
+    }
+    99% {
+      height: 20vh;
+    }
+    100%
+    {
+      opacity: 0;
+      height:0;
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+      opacity: 1;
+      height:20vh;
+    }
+    99% {
+      height: 20vh;
+    }
+    100%
+    {
+      opacity: 0;
+      height:0;
+    }
+}
+
+.footer-data .footer-menu.full,
+.footer-data .footer-menu.tofull {
+  top: 165px;
+
+  @media @wide {
+    top: 165px;
+  }
+
+  @media @square {
+    top: 155px;
+  }
+
+  @media @narrow, @super-narrow {
+    top: 100px;
+  }
+}
+
+.footer-data .footer-menu.bar,
+.footer-data .footer-menu.tobar {
+  top: 70px;
+}

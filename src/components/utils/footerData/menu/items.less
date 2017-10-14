@@ -1,0 +1,57 @@
+@import (reference) "common/default.less";
+
+.footer-data .footer-menu nav ul.menu {
+  display: flex;
+
+  @media @narrow, @super-narrow {
+    display: block;
+  }
+}
+
+.footer-data .footer-menu nav ul.menu li.nivel-1 {
+  width:21%;
+  margin-left: 2%;
+  margin-top: 20px;
+
+  @media @narrow, @super-narrow {
+    margin-left: 3%;
+    width: 88%;
+  }
+}
+
+.footer-data .footer-menu nav ul.menu li.nivel-1 > a > span {
+  color:#333;
+  font-weight:bold;
+  font-size: 0.9em;
+
+  @media @narrow, @super-narrow {
+    font-size: 1.1em;
+  }
+}
+
+.footer-data .footer-menu nav ul.menu li.nivel-1 > ul {
+  margin-top: 10px;
+}
+
+.footer-data .footer-menu nav ul.menu li.nivel-2 {
+  background-color: #eee;
+  margin-top: 5px;
+  padding: 10px;
+}
+
+.footer-data .footer-menu nav ul.menu li.nivel-2 > a > span {
+  color: #333;
+  font-size: 0.7em;
+
+  @media @square {
+    font-size: 0.8em;
+  }
+
+  @media @narrow, @super-narrow {
+    font-size: 1em;
+  }
+}
+
+.footer-data .footer-menu nav ul.menu li.nivel-2 > a > span:hover {
+  color: #777;
+}

@@ -2,41 +2,69 @@
 
 header .menu-trigger {
   position: absolute;
-  right: 20px;
-  top: 10px;
+  right: 25px;
+  top: 17px;
 
   @media @narrow, @super-narrow {
+    top: 10px;
     right: 10px;
   }
 }
 
-header .menu-trigger .fa {
-  font-size: 40px;
-}
-
-header.full .menu-trigger .fa,
-header.tofull .menu-trigger .fa {
-  color: @color-3;
-}
-
-header.bar .menu-trigger .fa,
-header.tobar .menu-trigger .fa {
-  color: @color-3;
-}
-
-header .menu-trigger button {
-  padding: 0;
-  margin: 0;
-  background-color: transparent;
+header .menu-trigger a {
+  font-size: 0.8em;
+  margin-left: 20px;
   cursor: pointer;
+  color: @color-2;
+
+  @media @narrow, @super-narrow {
+    display:none;
+  }
 }
 
-header.full .menu-trigger button:hover .fa,
-header.tofull .menu-trigger button:hover .fa {
+header .menu-trigger a.active {
   color: @color-4;
 }
 
-header.bar .menu-trigger button:hover .fa,
-header.tobar .menu-trigger button:hover .fa {
+header .menu-trigger a.menu {
+  @media @narrow, @super-narrow {
+    display:block;
+  }
+}
+
+header .menu-trigger a span {
+  @media @narrow, @super-narrow {
+    display:none;
+  }
+}
+
+header .menu-trigger a.menu span.fa {
+  @media @narrow, @super-narrow {
+    display:block;
+  }
+}
+
+header .menu-trigger a:not(.active):hover {
+  color: @color-3;
+}
+
+header .menu-trigger .fa {
+  font-size: 25px;
+  margin-left:8px;
+  @media @narrow, @super-narrow {
+    display:block;
+    font-size:40px;
+  }
+}
+
+header .menu-trigger .fa {
+  color: @color-2;
+}
+
+header .menu-trigger a.active .fa {
   color: @color-4;
+}
+
+header .menu-trigger a:not(.active):hover .fa {
+  color: @color-3;
 }

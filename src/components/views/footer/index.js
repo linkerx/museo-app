@@ -4,11 +4,11 @@ require('./styles.less');
 
 function Footer(props) {
   return (
-    <div className='footer_wrapper'>
+    <footer>
       {props.location.pathname !== "/" &&
         <FooterData />
       }
-    </div>
+    </footer>
   )
 }
 
