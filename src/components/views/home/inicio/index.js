@@ -1,7 +1,7 @@
 var React = require('react');
 var WpSlider = require('wp/slider');
+//var Marquee = require('ultils/marquee');
 require('./styles.less');
-
 
 function Inicio() {
   var queries = [
@@ -19,6 +19,7 @@ function Inicio() {
         <div className='home-slider'>
           {/* <WpSlider url='http://admin.emmanozzi.org' type='media' queries={queries} options={options} debug={false} /> */}
         </div>
+        
       </div>
     </section>
   )

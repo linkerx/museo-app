@@ -2,12 +2,11 @@
 
 .footer-data .site-title {
     position: absolute;
-    top: 10px;
-    left: 10px;
+    top: 30px;
+    left: 20px;
     width: auto;
-    @media @narrow, @super-narrow {
-      left: 0;
-      top: 10px;
+    @media @square, @narrow, @super-narrow {
+      left:0;
       width: 100%;
   }
 }
@@ -22,8 +21,8 @@
     height: 40px;
     width: 31px;
     cursor:pointer;
-    @media @narrow, @super-narrow {
-      height: 40px;
+    @media @square, @narrow, @super-narrow {
+      left:20px;
     }
 }
 
@@ -37,7 +36,7 @@
     top: 5px;
     width:500px;
 
-    @media @narrow, @super-narrow {
+    @media @square, @narrow, @super-narrow {
       left:0;
       width: 100%;
       position: absolute;

@@ -2,10 +2,14 @@
 
 section#home-calendario {
     z-index: 23;
-    height: 800px;
+    height: 700px;
     background-color: #eee;
 
-    @media @narrow, @super-narrow {
+    @media @narrow {
+      height:980px;
+    }
+
+    @media @super-narrow {
       height:1200px;
     }
 }
@@ -15,16 +19,27 @@ section#home-calendario .calendar-container {
   top: 0;
   right: 5%;
   width: 70%;
-  height: 500px;
+  height: 650px;
   overflow: hidden;
-  @media @narrow, @super-narrow {
-    top:400px;
+
+  @media @square {
+    width: 60%;
+  }
+
+  @media @narrow {
+    top:320px;
+    left:5%;
+    width:90%;
+  }
+
+  @media @super-narrow {
+    top:550px;
     left:5%;
     width:90%;
   }
 }
 
-section#home-calendario .calendar-container h1 {
+section#home-calendario .calendario-wrapper h1 {
   position: absolute;
   top: 20px;
   width: 100%;
@@ -36,11 +51,15 @@ section#home-calendario .calendar-container h1 {
 }
 
 section#home-calendario .calendar-container .rbc-calendar {
-  top: 70px;
+  top: 80px;
   position: absolute;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 570px;
+
+  @media @narrow, @super-narrow {
+    top: 20px;
+  }
 }
 
 section#home-calendario .calendar-container .rbc-toolbar,
@@ -76,29 +95,34 @@ section#home-calendario .calendar-container .rbc-date-cell {
   padding: 5px;
 }
 
+section#home-calendario .calendar-container .rbc-row-content {
+  font-size: 0.7em;
+}
 
 section#home-calendario .day-container {
   position: absolute;
-  top: 70px;
+  top: 80px;
   left: 5%;
   border: 1px solid #aaa;
   width: 15%;
-  height: 300px;
+  height: 220px;
   border-radius: 1vh;
 
   background-color: #fff;
   box-shadow: 5px 5px 5px 0px #aaa;
 
+  @media @square {
+    width:25%;
+  }
+
   @media @narrow {
-    left: 30%;
+    left: 5%;
     width: 40%;
-    height: 220px;
   }
 
   @media @super-narrow {
     left:15%;
     width:70%;
-    height:220px;
   }
 }
 
@@ -156,23 +180,41 @@ section#home-calendario .day-container .event {
 
 section#home-calendario .day-efemerides {
   position: absolute;
-  top: 400px;
+  top: 320px;
   left: 0;
   width: 25%;
 
-  @media @narrow, @super-narrow {
-    top:0;
-    width:100%;
+  @media @narrow {
+    top:80px;
+    left: 40%;
+    width:50%;
+  }
+
+  @media @super-narrow {
+    top:300px;
+    left: 5%;
+    width:90%;
   }
 }
 
 section#home-calendario .day-efemerides h1 {
   position: absolute;
-  top: 20px;
+  top: 10px;
   width: 100%;
-  color: #333;
+  color: #555;
   font-weight: normal;
-  font-size: 1.8em;
+  font-size: 1.3em;
   text-align: center;
   border: 0;
+}
+
+section#home-calendario .day-efemerides ul {
+  position: absolute;
+  top: 70px;
+  left: 10%;
+  width: 80%;
+}
+
+section#home-calendario .day-efemerides ul li{
+  list-style: circle;
 }

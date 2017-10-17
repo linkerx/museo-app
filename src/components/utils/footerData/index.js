@@ -3,6 +3,7 @@ var FooterTitle = require('./title');
 var FooterContact = require('./contact');
 var FooterSocial = require('./social');
 var FooterMenu = require('./menu');
+var FooterFoot = require('./foot');
 require('./styles.less');
 
 function FooterData(props){
@@ -12,6 +13,7 @@ function FooterData(props){
         <FooterSocial />
         <FooterContact />
         <FooterMenu />
+        <FooterFoot />
     </div>
   )
 }

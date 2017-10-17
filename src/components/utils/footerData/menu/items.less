@@ -4,18 +4,19 @@
   display: flex;
 
   @media @narrow, @super-narrow {
-    display: block;
+    flex-wrap: wrap;
   }
 }
 
 .footer-data .footer-menu nav ul.menu li.nivel-1 {
-  width:21%;
+  width:23%;
   margin-left: 2%;
   margin-top: 20px;
 
   @media @narrow, @super-narrow {
-    margin-left: 3%;
-    width: 88%;
+    margin-left: 0;
+    width: 50%;
+    text-align: center;
   }
 }
 
@@ -34,14 +35,13 @@
 }
 
 .footer-data .footer-menu nav ul.menu li.nivel-2 {
-  background-color: #eee;
   margin-top: 5px;
   padding: 10px;
 }
 
 .footer-data .footer-menu nav ul.menu li.nivel-2 > a > span {
-  color: #333;
-  font-size: 0.7em;
+  color: #fff;
+  font-size: 0.8em;
 
   @media @square {
     font-size: 0.8em;

@@ -1,6 +1,16 @@
+@import (reference) "common/default.less";
+
 .footer-data {
   color: #999;
   font-size: 0.8em;
   position: relative;
-  height:500px;
+  height:390px;
+
+  @media @square {
+    height:430px;
+  }
+
+  @media @narrow, @super-narrow {
+    height:610px;
+  }
 }
