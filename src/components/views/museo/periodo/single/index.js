@@ -66,7 +66,7 @@ class Periodo extends React.Component {
               });
 
               var hechosAgrupados = hechos.reduce(function(acum,curr){
-                console.log(curr);
+                //console.log(curr);
                 if(curr.alcance == 'local'){
                   if(!acum['locales']) acum['locales'] = [];
                   acum['locales'].push(curr)
@@ -102,7 +102,7 @@ class Periodo extends React.Component {
               url: 'http://admin.emmanozzi.org',
               type: 'objeto',
               queries: queries_objetos,
-              debug: false
+              debug: true
             }
 
             WpApi.getList(opts_objetos)
@@ -207,7 +207,7 @@ class Periodo extends React.Component {
 
               <div className='hechos'>
                 <h1>Hechos/procesos del Período</h1>
-                {this.state.item.hechos && this.state.item.hechos.locales &&
+                {/* this.state.item.hechos && this.state.item.hechos.locales &&
                   <div className='list-locales'>
                     {this.state.item.hechos.locales.map(function (item, index) {
                         return (
@@ -216,8 +216,9 @@ class Periodo extends React.Component {
                       }.bind(this))
                     }
                   </div>
+                  */
                 }
-                {this.state.item.hechos && this.state.item.hechos.nacionales &&
+                {/* this.state.item.hechos && this.state.item.hechos.nacionales &&
                   <div className='list-nacionales'>
                     {this.state.item.hechos.nacionales.map(function (item, index) {
                         return (
@@ -226,17 +227,20 @@ class Periodo extends React.Component {
                       }.bind(this))
                     }
                   </div>
+                  */
                 }
-                {this.state.item.hechos && this.state.item.hechos.internacionales &&
+                {/*this.state.item.hechos && this.state.item.hechos.internacionales &&
                   <div className='list-internacionales'>
-                    {this.state.item.hechos.internacionalesº.map(function (item, index) {
+                    {this.state.item.hechos.internacionales.map(function (item, index) {
                         return (
                           <PeriodoHechoItem key={item.id} item={item} defaultImg='http://emmanozzi.org/public/images/noimage.jpg' />
                         )
                       }.bind(this))
                     }
                   </div>
+                  */
                 }
+
               </div>
 
               <div className='objetos'>

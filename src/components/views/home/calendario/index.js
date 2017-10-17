@@ -12,9 +12,6 @@ BigCalendar.setLocalizer(
   BigCalendar.momentLocalizer(moment)
 );
 
-const CALENDAR_ID = 'prensalegisrn@gmail.com'
-const API_KEY = 'AIzaSyC4phiAKuWFL-aWUup8cTZfHKTDtlVF0a8'
-
 var views = ['mes', 'semana', 'dia', 'agenda'];
 
 var today = {
@@ -80,8 +77,6 @@ class Calendario extends React.Component {
                 } else {
                   var end = new Date(item.end.date)
                 }
-
-
 
                 start.setHours(start.getHours() + 3 );
 
