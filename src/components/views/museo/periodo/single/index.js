@@ -5,9 +5,10 @@ var Cargando = require('utils/cargando');
 var FontAwesome = require('react-fontawesome');
 var renderHTML = require('react-render-html');
 var PeriodoHechoItem = require('./hechoItem');
+var FullscreenImage = require('utils/fullscreenImage');
+var Link = require('react-router-dom').Link;
 require('./styles.less');
 require('./hechos.less');
-
 
 class Periodo extends React.Component {
 
@@ -34,7 +35,7 @@ class Periodo extends React.Component {
       }
     });
     var opts = {
-      url: 'http://admin.emmanozzi.org',
+      url: null,
       type: 'periodo',
       slug: this.props.match.params.slug,
       queries: ['_embed'],
@@ -50,7 +51,7 @@ class Periodo extends React.Component {
           ];
 
           var opts_hechos = {
-            url: 'http://admin.emmanozzi.org',
+            url: null,
             type: 'proceso',
             queries: queries_hechos,
             debug: false
@@ -93,13 +94,15 @@ class Periodo extends React.Component {
               });
             }.bind(this));
 
+            console.log(item[0].id);
+
             var queries_objetos = [
               '_embed',
               'filter[periodo]='+item[0].id,
             ];
 
             var opts_objetos = {
-              url: 'http://admin.emmanozzi.org',
+              url: null,
               type: 'objeto',
               queries: queries_objetos,
               debug: true
@@ -134,7 +137,11 @@ class Periodo extends React.Component {
 
     if(this.state.item){
       if(this.state.item._embedded['wp:featuredmedia']){
-        var item_image = this.state.item._embedded['wp:featuredmedia'][0].media_details.sizes['full'].source_url;
+        if(this.state.item._embedded['wp:featuredmedia'][0].media_details.sizes['large']){
+          var item_image = this.state.item._embedded['wp:featuredmedia'][0].media_details.sizes['large'].source_url;
+        } else {
+          var item_image = this.state.item._embedded['wp:featuredmedia'][0].media_details.sizes['full'].source_url;
+        }
       }
     }
 
@@ -182,10 +189,23 @@ class Periodo extends React.Component {
           :
           <article className={hasImageClass}>
             <div className='header'>
-              {item_image && <WpItemImage src={item_image} render='back'/>}
+              {item_image &&
+                <div>
+                  <WpItemImage src={item_image} render='back'/>
+                  <FullscreenImage imageSrc={item_image} modalContainer='museo-modal' />
+                </div>
+              }
               <h1>{this.state.item.title.rendered}</h1>
               <div className='date'>
-                [<span className='inicio'>{show_fecha_inicio}</span>-<span className='fin'>{show_fecha_fin}</span>]
+                {show_fecha_inicio != show_fecha_fin
+                  ?
+                    [<span className='inicio'>{show_fecha_inicio}</span>-<span className='fin'>{show_fecha_fin}</span>]
+                  :
+                    [<span className='inicio'>{show_fecha_inicio}</span>]
+                }
+              </div>
+              <div className='return'>
+                <Link to='/periodos' title='Volver a periodos'><FontAwesome name='arrow-left' /></Link>
               </div>
             </div>
 
@@ -207,38 +227,41 @@ class Periodo extends React.Component {
 
               <div className='hechos'>
                 <h1>Hechos/procesos del Período</h1>
-                {/* this.state.item.hechos && this.state.item.hechos.locales &&
+                { this.state.item.hechos && this.state.item.hechos.locales &&
                   <div className='list-locales'>
+                    <h2>Locales</h2>
                     {this.state.item.hechos.locales.map(function (item, index) {
                         return (
-                          <PeriodoHechoItem key={item.id} item={item} defaultImg='http://emmanozzi.org/public/images/noimage.jpg' />
+                          <PeriodoHechoItem key={item.id} item={item} defaultImg='public/images/noimage.jpg' />
                         )
                       }.bind(this))
                     }
                   </div>
-                  */
+
                 }
-                {/* this.state.item.hechos && this.state.item.hechos.nacionales &&
+                { this.state.item.hechos && this.state.item.hechos.nacionales &&
                   <div className='list-nacionales'>
+                  <h2>Nacionales</h2>
                     {this.state.item.hechos.nacionales.map(function (item, index) {
                         return (
-                          <PeriodoHechoItem key={item.id} item={item} defaultImg='http://emmanozzi.org/public/images/noimage.jpg' />
+                          <PeriodoHechoItem key={item.id} item={item} defaultImg='public/images/noimage.jpg' />
                         )
                       }.bind(this))
                     }
                   </div>
-                  */
+
                 }
-                {/*this.state.item.hechos && this.state.item.hechos.internacionales &&
+                {this.state.item.hechos && this.state.item.hechos.internacionales &&
                   <div className='list-internacionales'>
+                  <h2>Internacionles</h2>
                     {this.state.item.hechos.internacionales.map(function (item, index) {
                         return (
-                          <PeriodoHechoItem key={item.id} item={item} defaultImg='http://emmanozzi.org/public/images/noimage.jpg' />
+                          <PeriodoHechoItem key={item.id} item={item} defaultImg='public/images/noimage.jpg' />
                         )
                       }.bind(this))
                     }
                   </div>
-                  */
+
                 }
 
               </div>
@@ -249,7 +272,7 @@ class Periodo extends React.Component {
                   <div className='list-objetos'>
                     {this.state.item.objetos.map(function (item, index) {
                         return (
-                          <PeriodoHechoItem key={item.id} item={item} defaultImg='http://emmanozzi.org/public/images/noimage.jpg' />
+                          <PeriodoHechoItem key={item.id} item={item} defaultImg='public/images/noimage.jpg' />
                         )
                       }.bind(this))
                     }

@@ -5,7 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   entry: [
-    'webpack-dev-server/client?http://dev.emmanozzi.org/',
+    'webpack-dev-server/client?https://dev.emmanozzi.org/',
     './src/index.js',
   ],
   output: {
@@ -49,7 +49,7 @@ module.exports = {
       template: 'src/index.html'
     }),
     new webpack.DefinePlugin({
-      'lnk_api_host': "'http://admin.emmanozzi.org'",
+      'lnk_api_host': "'https://admin.emmanozzi.org'",
       'lnk_api_dir': "'/api'",
     })
   ]

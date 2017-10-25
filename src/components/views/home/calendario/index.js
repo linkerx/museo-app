@@ -49,7 +49,7 @@ class Calendario extends React.Component {
   getEvents(mes){
     var calId = 'linkerx.com.ar_mshat57sculhtpe3hbe0tleco4@group.calendar.google.com'
     var apiKey = 'AIzaSyCNWbiphmOQ0cYa7AV4PneCGwaezMLQt0M'
-    var url = 'https://www.googleapis.com/calendar/v3/calendars/'+calId+'/events?key='+apiKey+'&timeMin='+mes;
+    var url = 'https://www.googleapis.com/calendar/v3/calendars/'+calId+'/events?key='+apiKey+'&timeMin='+mes+'&showDeleted=false&singleEvents=true';
 
     this.state = {
       date: this.state.date,
@@ -63,12 +63,19 @@ class Calendario extends React.Component {
             var finalItems = [];
             var itemsToday = [];
             if(response.data.items){
+
+                console.log(response.data.items);
+
                 var finalItems = response.data.items.map(function(item,index){
+
+                if(!item.start){
+                  console.log(item);
+                }
+
 
                 if(start){
                   var start = new Date(item.start.dateTime)
                 } else {
-
                   var start = new Date(item.start.date)
                 }
 

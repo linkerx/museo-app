@@ -36,7 +36,7 @@ class Periodos extends React.Component {
     ];
 
     var opts = {
-      url: 'http://admin.emmanozzi.org',
+      url: null,
       type: 'periodo',
       queries: queries,
       debug: false

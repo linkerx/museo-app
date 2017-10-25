@@ -2,35 +2,27 @@
 
 #archive-periodos.list .list {
   display:block;
-  width:90%;
-  margin-left:5%;
-  margin-top: 4vh;
+  .articleWidth;
+  margin: auto;
+  margin-top:30px;
 }
 
 #archive-periodos.list .list article {
   position:relative;
   width: 100%;
-  height: 25vh;
+  height: 200px;
+  margin-bottom:30px;
   display: flex;
-
-  @media @narrow, @super-narrow {
-    height: 35vh;
-    margin-bottom:3vh;
-  }
 }
 
 #archive-periodos.list .list article .list-item-image {
-  width: 25vh;
-
-  @media @narrow, @super-narrow {
-    margin-top: 3vh;
-  }
+  width: 200px;
 }
 
 #archive-periodos.list .list article .list-item-content {
   width: auto;
   margin-left: 2%;
-  height: 20vh;
+  height:200px;
   overflow-y: auto;
   padding-right: 2%;
   position: relative;
@@ -47,7 +39,7 @@
 
 #archive-periodos.list .list article h2 {
   font-size: 1.5em;
-  margin-top: 1vh;
+  margin-top: 10px;
 }
 
 
@@ -56,8 +48,8 @@
 }
 
 #archive-periodos.list .list article  .image_container {
-  width: 100%;
-  height: 15vh;
+  width: 200px;
+  height: 200px;
   margin: auto;
   position:relative;
 
@@ -65,8 +57,8 @@
 
 #archive-periodos.list .list article .image_container .image{
   position:absolute;
-  width:20vh;
-  height:20vh;
+  width:200px;
+  height:200px;
   background-position: center;
   background-repeat: no-repeat;
   background-size: 100%;
@@ -84,12 +76,13 @@
   position:absolute;
   top:0;
   right:2%;
-  font-size: 0.6em;
+  font-size: 0.8em;
   font-weight: bold;
-  margin-top: 2vh;
+  margin-top: 15px;
 
   @media @narrow, @super-narrow {
     position: relative;
+      right:0;
 
   }
 }

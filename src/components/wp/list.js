@@ -24,6 +24,7 @@ class WpList extends React.Component {
     });
     var opts = {
       url: this.props.url,
+      site: this.props.site,
       type: this.props.type,
       queries: this.props.queries,
       debug: this.props.debug
@@ -55,6 +56,11 @@ class WpList extends React.Component {
       imageSize = this.props.imageSize;
     }
 
+    var defaultImg = null;
+    if(this.props.defaultImg){
+      defaultImg = this.props.defaultImg;
+    }
+
     var heading = 2;
     if(this.props.heading){
       heading = this.props.heading;
@@ -67,7 +73,7 @@ class WpList extends React.Component {
           this.props.children
           :
           this.state.items.map(function (item, index) {
-            return (<ListItem key={item.id} item={item} imageRender={imageRender} imageSize={imageSize} />)
+            return (<ListItem key={item.id} item={item} imageRender={imageRender} imageSize={imageSize} defaultImg={defaultImg} />)
           })
         }
       </div>

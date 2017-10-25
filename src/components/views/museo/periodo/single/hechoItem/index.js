@@ -46,9 +46,13 @@ function PeriodoHechoItem(props) {
       </div>
       <div className='list-item-content'>
         <div className='date'>
-          [<span className='inicio'>{show_fecha_inicio}</span>-<span className='fin'>{show_fecha_fin}</span>]
-        </div>
-        <ItemTitle title={props.item.title.rendered} linkTo={'/'+props.item.type+'/'+props.item.slug} />
+        {show_fecha_inicio != show_fecha_fin
+          ?
+            [<span className='inicio'>{show_fecha_inicio}</span>-<span className='fin'>{show_fecha_fin}</span>]
+          :
+            [<span className='inicio'>{show_fecha_inicio}</span>]
+        }        </div>
+        <ItemTitle title={props.item.title.rendered} linkTo={'/'+props.item.type+'/'+props.item.slug} heading='2' />
         <div className='excerpt'>{renderHTML(props.item.excerpt.rendered)}</div>
       </div>
     </article>

@@ -31,7 +31,7 @@ class Hecho extends React.Component {
       }
     });
     var opts = {
-      url: 'http://admin.emmanozzi.org',
+      url: null,
       type: 'proceso',
       slug: this.props.match.params.slug,
       queries: ['_embed'],

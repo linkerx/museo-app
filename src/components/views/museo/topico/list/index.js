@@ -81,7 +81,7 @@ class Topicos extends React.Component {
           :
           this.state.items.map(function (item, index) {
             return (
-              <TopicoItem key={item.id} item={item} defaultImg='http://emmanozzi.org/public/images/noimage.jpg' />
+              <TopicoItem key={item.id} item={item} defaultImg='public/images/noimage.jpg' />
             )
           }.bind(this))
         }

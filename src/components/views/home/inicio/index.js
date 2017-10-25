@@ -17,9 +17,9 @@ function Inicio() {
     <section id='home-inicio' className='parallax-group'>
       <div className='parallax-layer parallax-layer-back'>
         <div className='home-slider'>
-          {/* <WpSlider url='http://admin.emmanozzi.org' type='media' queries={queries} options={options} debug={false} /> */}
+          {/* <WpSlider url='https://admin.emmanozzi.org' type='media' queries={queries} options={options} debug={false} /> */}
         </div>
-        
+
       </div>
     </section>
   )

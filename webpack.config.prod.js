@@ -79,7 +79,7 @@ module.exports = {
               minRatio: 0.8
   }),
   new webpack.DefinePlugin({
-    'lnk_api_host': "'http://admin.emmanozzi.org'",
+    'lnk_api_host': "'https://admin.emmanozzi.org'",
     'lnk_api_dir': "'/api'",
   })
 

@@ -157,7 +157,7 @@ class Topico extends React.Component {
                   <div className='list'>
                     {this.state.item.hechos.map(function (item, index) {
                         return (
-                          <TopicoHechoItem key={item.id} item={item} defaultImg='http://emmanozzi.org/public/images/noimage.jpg' />
+                          <TopicoHechoItem key={item.id} item={item} defaultImg='public/images/noimage.jpg' />
                         )
                       }.bind(this))
                     }

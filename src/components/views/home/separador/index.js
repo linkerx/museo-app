@@ -16,7 +16,7 @@ function Separador() {
   return (
     <section id='home-separador' className='parallax-group'>
       <div className='home-slider-separador'>
-        <WpSlider url='http://admin.emmanozzi.org' type='media' queries={queries} render='back' options={options} debug={false} />
+        <WpSlider type='media' queries={queries} render='back' options={options} debug={false} />
       </div>
     </section>
   )
