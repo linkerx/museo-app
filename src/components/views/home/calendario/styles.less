@@ -21,6 +21,7 @@ section#home-calendario .calendar-container {
   width: 70%;
   height: 650px;
   overflow: hidden;
+  z-index:25;
 
   @media @square {
     width: 60%;
@@ -62,8 +63,12 @@ section#home-calendario .calendar-container .rbc-calendar {
   }
 }
 
-section#home-calendario .calendar-container .rbc-toolbar,
+section#home-calendario .calendar-container .rbc-toolbar {
+
+}
+
 section#home-calendario .calendar-container .rbc-toolbar button {
+  background-color: #fff;
   font-size:14px;
   @media @square {
     font-size:12px;
@@ -76,6 +81,8 @@ section#home-calendario .calendar-container .rbc-toolbar button {
 
 section#home-calendario .calendar-container .rbc-month-view {
   border: 1px solid #999;
+  background-color: #fff;
+  border-radius: 10px;
 }
 
 section#home-calendario .calendar-container .rbc-month-row + .rbc-month-row {
@@ -217,4 +224,21 @@ section#home-calendario .day-efemerides ul {
 
 section#home-calendario .day-efemerides ul li{
   list-style: circle;
+}
+
+section#home-calendario .calendar-modal {
+  position:absolute;
+  top:250px;
+  left:20%;
+  width:60%;
+  height:400px;
+  z-index:28;
+  border: 1px solid #999;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 2px 2px 5px #aaa;
+}
+
+section#home-calendario .calendar-modal.closed {
+  display:none;
 }

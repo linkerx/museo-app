@@ -8,7 +8,8 @@ var Info = require('./info');
 
 require('./parallax.less');
 
-function Home(){
+function Home(props){
+  setTimeout(function(){props.ready()}.bind(this), 1000);
   return (
     <section id='parallax'>
       <Inicio />

@@ -6,9 +6,22 @@
 
 #periodo article .header,
 #periodo article .header .image_container {
-  height: 50vh;
+  height: 700px;
   width: 100%;
   position:relative;
+
+
+  @media @wide {
+    height: 650px;
+  }
+
+  @media @square {
+    height: 500px;
+  }
+
+  @media @narrow, @super-narrow {
+    height: 400px;
+  }
 }
 
 #periodo article .header .image_container .image {
@@ -28,20 +41,28 @@
 }
 
 #periodo article .header .open-trigger span.fa {
-  font-size:30px;
+  font-size: 50px;
+  color: #f9ff99;
+  text-shadow: 0px 0px 3px #000,2px 2px 5px #000;
   cursor: pointer;
+}
+
+#periodo article .header .open-trigger span.fa:hover {
+  color: #0a7442
 }
 
 #periodo article .header h1 {
   position: absolute;
-  top: 42vh;
+  bottom: 0;
   left: 0;
-  width: 100%;
+  width: 96%;
   text-align: center;
   border: 0;
   color: #fff;
-  text-shadow: 2px 2px 5px #000,2px 2px 5px #000;
   font-size: 2.5em;
+  background-color: rgba(0,0,0,0.5);
+  margin: 0;
+  padding: 20px 2%;
 }
 
 #periodo article .header .date {
@@ -63,9 +84,14 @@
 }
 
 #periodo article .header .return .fa {
-  font-size:30px;
+  font-size: 50px;
+  color: #f9ff99;
+  text-shadow: 0px 0px 3px #000,2px 2px 5px #000;
   cursor: pointer;
-  color:@color-2;
+}
+
+#periodo article .header .return .fa:hover {
+  color: #0a7442
 }
 
 #periodo article .date .inicio {

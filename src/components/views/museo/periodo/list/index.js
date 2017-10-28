@@ -52,6 +52,8 @@ class Periodos extends React.Component {
             return 0;
           });
 
+          setTimeout(function(){this.props.ready()}.bind(this), 1000);
+
           return {
             items: items,
             listStyle: this.state.listStyle
@@ -81,7 +83,7 @@ class Periodos extends React.Component {
           :
           this.state.items.map(function (item, index) {
             return (
-              <PeriodoItem key={item.id} item={item} defaultImg='http://emmanozzi.org/public/images/noimage.jpg' />
+              <PeriodoItem key={item.id} item={item} defaultImg='public/images/noimage.jpg' />
             )
           }.bind(this))
         }

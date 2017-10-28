@@ -1,0 +1,64 @@
+@import (reference) "common/default.less";
+
+#periodo .objetos {
+  margin-bottom: 30px;
+}
+
+#periodo .objetos .list-objetos {
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-content: flex-start;
+}
+
+#periodo .objetos .list-objetos article {
+  width: 30%;
+  text-align: center;
+  margin-top: 30px;
+
+  @media @wide{
+    width: 30%;
+  }
+
+  @media @square {
+    width:45%;
+  }
+
+  @media @narrow, @super-narrow {
+    width:75%;
+  }
+}
+
+#periodo .objetos .list-objetos article h2 {
+  text-align: center;
+  font-size: 1.5em;
+  margin-top: 5px;
+
+  @media @narrow, @super-narrow {
+      font-size: 1.5em;
+  }
+}
+
+#periodo .objetos .list-objetos article .image_container {
+  width: 200px;
+  height: 200px;
+  margin: auto;
+  position:relative;
+}
+
+#periodo .objetos .list-objetos article .image_container .image{
+  position:absolute;
+  width:100%;
+  height:100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  border-radius: 50%;
+  border: 1px solid #aaa;
+
+  transition: background-size 10s ease;
+}
+
+#periodo .objetos .list-objetos article .image_container .image:hover{
+  background-size: 150%;
+}

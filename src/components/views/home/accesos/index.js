@@ -10,14 +10,14 @@ function Accesos () {
     <ul className='secciones'>
       <li>
         <Link to='/periodos'>
-          <WpItemImage src='/public/assets/images/periodos.jpg' render='back'/>
+          <WpItemImage src='/public/assets/images/periodos2.jpg' render='back'/>
           <h2>Períodos</h2>
           <span>Los periodos en la historia de Patagones son etapas marcadas por el cambio de circunstancias político económicas.</span>
         </Link>
       </li>
       <li>
         <Link to='/topicos'>
-          <WpItemImage src='/public/assets/images/topicos.jpg' render='back'/>
+          <WpItemImage src='/public/assets/images/topicos2.jpg' render='back'/>
           <h2>Tópicos</h2>
           <span>En los tópicos encontramos temas puntuales de nuestra historia, temas que despiertan curiosidad e interés general.</span>
         </Link>

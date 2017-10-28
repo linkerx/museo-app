@@ -1,5 +1,6 @@
 var React = require('react');
 var axios = require('axios');
+var FontAwesome = require('react-fontawesome');
 import BigCalendar from 'react-big-calendar';
 import moment from 'moment';
 
@@ -29,27 +30,44 @@ class Calendario extends React.Component {
     this.state = {
       date: moment().format('YYYY-MM[-01T00:00:00Z]'),
       items: [],
-      itemsToday: []
+      itemsToday: [],
+      modalOpen: false,
+      modalItem: null
     }
 
     this.getEvents = this.getEvents.bind(this);
     this.onNavigate = this.onNavigate.bind(this);
+    this.onSelectEvent = this.onSelectEvent.bind(this);
+    this.onSelectSlot = this.onSelectSlot.bind(this);
   }
 
   componentDidMount(){
-      this.getEvents(this.state.date);
+      var minDate = new Date(this.state.date);
+      var maxDate = minDate.setFullYear(minDate.getFullYear() + 1 );
+      var max = moment(maxDate).format('YYYY-MM[-01T00:00:00Z]');
+      this.getEvents(this.state.date,max);
   }
 
   onNavigate(date){
-    var mes = moment(date).format('YYYY-MM[-01T00:00:00Z]');
-    if(mes < this.state.date)
-      this.getEvents(mes);
+    var min = moment(date).format('YYYY-MM[-01T00:00:00Z]');
+    var minDate = new Date(min);
+    var maxDate = minDate.setFullYear(minDate.getFullYear() + 1 );
+    var max = moment(maxDate).format('YYYY-MM[-01T00:00:00Z]');
+    if(min < this.state.date)
+      this.getEvents(min,max);
   }
 
-  getEvents(mes){
+  getEvents(min,max){
+
+    var debug = true;
+
     var calId = 'linkerx.com.ar_mshat57sculhtpe3hbe0tleco4@group.calendar.google.com'
     var apiKey = 'AIzaSyCNWbiphmOQ0cYa7AV4PneCGwaezMLQt0M'
-    var url = 'https://www.googleapis.com/calendar/v3/calendars/'+calId+'/events?key='+apiKey+'&timeMin='+mes+'&showDeleted=false&singleEvents=true';
+    var url = 'https://www.googleapis.com/calendar/v3/calendars/'+calId+'/events?key='+apiKey+'&timeMin='+min+'&timeMax='+max+'&showDeleted=false&singleEvents=true';
+
+    if(debug){
+      console.log(url);
+    }
 
     this.state = {
       date: this.state.date,
@@ -64,14 +82,11 @@ class Calendario extends React.Component {
             var itemsToday = [];
             if(response.data.items){
 
-                console.log(response.data.items);
-
-                var finalItems = response.data.items.map(function(item,index){
-
-                if(!item.start){
-                  console.log(item);
+                if(debug){
+                  console.log(response.data.items);
                 }
 
+                var finalItems = response.data.items.map(function(item,index){
 
                 if(start){
                   var start = new Date(item.start.dateTime)
@@ -98,7 +113,6 @@ class Calendario extends React.Component {
                 }
 
                 if(start.getTime() === today.getTime()){
-                  console.log('yes');
                   itemsToday.push(resp);
                 }
 
@@ -109,7 +123,7 @@ class Calendario extends React.Component {
 
             }
             return {
-              mes: mes,
+              mes: min,
               items: finalItems,
               itemsToday: itemsToday
             }
@@ -118,8 +132,36 @@ class Calendario extends React.Component {
 
   }
 
+  onSelectEvent(event){
+    this.setState(function(){
+      return {
+        modalOpen: true,
+        modalItem: {
+            event: event,
+            post: null
+          }
+      }
+    })
+  }
+
+  onSelectSlot(slotInfo){
+  }
+
+  closeModal(){
+    this.setState(function(){
+      return {
+        modalOpen: false,
+        modalItem: null
+      }
+    })
+  }
+
   render() {
-    console.log(this.state.itemsToday);
+    var modalStyle = 'closed';
+    if(this.state.modalOpen){
+        modalStyle = 'opened';
+    }
+
     return (
       <section id='home-calendario' className='parallax-group'>
         <div className='calendario-wrapper'>
@@ -146,16 +188,37 @@ class Calendario extends React.Component {
           </div>
           <div className='calendar-container'>
             <BigCalendar
-                selectable
-                events={this.state.items}
-                defaultView='month'
-                culture='es'
-                onSelectEvent={event => alert(event.title)}
-                onSelectSlot={(slotInfo) => alert(
-                  `selected slot: \n\nstart ${slotInfo.start.toLocaleString()} ` +
-                  `\nend: ${slotInfo.end.toLocaleString()}`
-                )}
+              selectable
+              events={this.state.items}
+              defaultView='month'
+              culture='es'
+              onSelectEvent={
+                function(event){
+                  this.onSelectEvent(event);
+                }.bind(this)
+              }
+              onSelectSlot={
+                function(slotInfo){
+                  this.onSelectSlot(slotInfo);
+                }.bind(this)
+              }
             />
+          </div>
+          <div className={'calendar-modal '+modalStyle} >
+            <button onClick={function(){this.closeModal()}.bind(this)}><FontAwesome name='close' /></button>
+            {this.state.modalItem &&
+              <div className='modal-content'>
+              {this.state.modalItem.post
+                ?
+                <div className='title'>{this.state.modalItem.event.title}</div>
+                :
+                <div className='no-item'>
+                  <h3>{this.state.modalItem.event.title}</h3>
+                  <span>Sin Descripcion</span>
+                </div>
+              }
+              </div>
+            }
           </div>
         </div>
       </section>

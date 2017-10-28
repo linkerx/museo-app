@@ -5,10 +5,10 @@ var FontAwesome = require('react-fontawesome');
 module.exports = {
   openFull: function(modalContainer,imageSrc){
     ReactDOM.render(
-      <div id='fullscreen-image' >
+      <div id='fullscreen-image' onClick={() => {ReactDOM.render(<div></div>,document.getElementById(modalContainer))}} >
         <div className='modal'>
         </div>
-        <div className='img-container'>
+        <div className='img-container' onClick={() => {ReactDOM.render(<div></div>,document.getElementById(modalContainer))}} >
           <img src={imageSrc} />
         </div>
         <div className='close-trigger' onClick={() => {ReactDOM.render(<div></div>,document.getElementById(modalContainer))}} >

@@ -9,6 +9,7 @@ var FullscreenImage = require('utils/fullscreenImage');
 var Link = require('react-router-dom').Link;
 require('./styles.less');
 require('./hechos.less');
+require('./objetos.less');
 
 class Periodo extends React.Component {
 
@@ -94,7 +95,7 @@ class Periodo extends React.Component {
               });
             }.bind(this));
 
-            console.log(item[0].id);
+            //console.log(item[0].id);
 
             var queries_objetos = [
               '_embed',
@@ -112,6 +113,10 @@ class Periodo extends React.Component {
               .then(function(objetos) {
 
                 item[0].objetos = objetos;
+
+                if(this.props.ready){
+                  setTimeout(function(){this.props.ready()}.bind(this), 1000);
+                }
 
                 this.setState(function(){
                   return {
@@ -135,7 +140,7 @@ class Periodo extends React.Component {
 
   render() {
 
-    if(this.state.item){
+    if(this.state.item && this.state.item._embedded){
       if(this.state.item._embedded['wp:featuredmedia']){
         if(this.state.item._embedded['wp:featuredmedia'][0].media_details.sizes['large']){
           var item_image = this.state.item._embedded['wp:featuredmedia'][0].media_details.sizes['large'].source_url;
