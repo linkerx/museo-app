@@ -5,7 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   entry: [
-    'webpack-dev-server/client?https://dev.emmanozzi.org/',
+    'webpack-dev-server/client?https://emmanozzi.org/',
     './src/index.js',
   ],
   output: {

@@ -36,7 +36,7 @@ class Topicos extends React.Component {
     ];
 
     var opts = {
-      url: null,
+      url: 'http://admin.emmanozzi.org',
       type: 'topico',
       queries: queries,
       debug: false
@@ -51,8 +51,6 @@ class Topicos extends React.Component {
             if(a.inicio > b.inicio) return 1;
             return 0;
           });
-
-          setTimeout(function(){this.props.ready()}.bind(this), 1000);
 
           return {
             items: items,

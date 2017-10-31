@@ -48,7 +48,7 @@ function TopicoItem(props) {
         <div className='date'>
           [<span className='inicio'>{show_fecha_inicio}</span>-<span className='fin'>{show_fecha_fin}</span>]
         </div>
-        <ItemTitle title={props.item.title.rendered} linkTo={'/'+props.item.type+'/'+props.item.slug} />
+        <ItemTitle title={props.item.title.rendered} linkTo={'/'+props.item.type+'/'+props.item.slug} heading='2' />
         <div className='excerpt'>{renderHTML(props.item.excerpt.rendered)}</div>
       </div>
     </article>

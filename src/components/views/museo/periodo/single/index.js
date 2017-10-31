@@ -85,7 +85,7 @@ class Periodo extends React.Component {
                 },
               {});
 
-              item[0].hechos = hechosAgrupados;
+              item[0].hechos = null; //hechosAgrupados;
 
               this.setState(function(){
                 return {
@@ -111,6 +111,10 @@ class Periodo extends React.Component {
 
             WpApi.getList(opts_objetos)
               .then(function(objetos) {
+
+                if(objetos.length == 0){
+                   objetos = null;
+                }
 
                 item[0].objetos = objetos;
 
@@ -230,6 +234,7 @@ class Periodo extends React.Component {
                 </div>
               }
 
+              { this.state.item.hechos &&
               <div className='hechos'>
                 <h1>Hechos/procesos del Período</h1>
                 { this.state.item.hechos && this.state.item.hechos.locales &&
@@ -270,10 +275,12 @@ class Periodo extends React.Component {
                 }
 
               </div>
+              }
 
-              <div className='objetos'>
-                <h1>Objetos relacionados con el Período</h1>
                 {this.state.item.objetos &&
+                  <div className='objetos'>
+                  <h1>Objetos relacionados con el Período</h1>
+
                   <div className='list-objetos'>
                     {this.state.item.objetos.map(function (item, index) {
                         return (
@@ -282,8 +289,8 @@ class Periodo extends React.Component {
                       }.bind(this))
                     }
                   </div>
-                }
               </div>
+                }
             </div>
           </article>
         }

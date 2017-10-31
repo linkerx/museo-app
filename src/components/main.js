@@ -63,10 +63,12 @@ class Main extends React.Component {
           <Route exact path='/' render={ function(props) { return ( <Home {...props} ready={this.ready} /> ) }.bind(this) } />
           <Route exact path='/periodos' render={ function(props) { return ( <Periodos {...props} ready={this.ready} /> ) }.bind(this) } />
           <Route exact path='/periodo/:slug' render={ function(props) { return ( <Periodo {...props} ready={this.ready} /> ) }.bind(this) } />
-          <Route exact path='/topico' render={ function(props) { return ( <Topicos {...props} ready={this.ready} /> ) }.bind(this) } />
+          <Route exact path='/topicos' render={ function(props) { return ( <Topicos {...props} ready={this.ready} /> ) }.bind(this) } />
           <Route exact path='/topico/:slug' render={ function(props) { return ( <Topico {...props} ready={this.ready} /> ) }.bind(this) } />
           <Route exact path='/escuela' render={ function(props) { return ( <Ejes {...props} ready={this.ready} /> ) }.bind(this) } />
           <Route exact path='/escuela/eje/:slug' render={ function(props) { return ( <Eje {...props} ready={this.ready} /> ) }.bind(this) } />
+          <Route exact path='/objetos' render={ function(props) { return ( <Objetos {...props} ready={this.ready} /> ) }.bind(this) } />
+          <Route exact path='/objeto/:slug' render={ function(props) { return ( <Objeto {...props} ready={this.ready} /> ) }.bind(this) } />
           <Route path='/:slug1/:slug2?/:slug3?' render={ function(props) { return ( <WpSite {...props} ready={this.ready} /> ) }.bind(this) } />
         </Switch>
       </div>

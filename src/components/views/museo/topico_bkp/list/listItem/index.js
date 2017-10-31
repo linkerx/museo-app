@@ -4,7 +4,7 @@ var ItemImage = require('wp/item-image');
 var renderHTML = require('react-render-html');
 var Link = require('react-router-dom').Link;
 
-function PeriodoHechoItem(props) {
+function TopicoItem(props) {
 
   var item_image = '';
 
@@ -46,17 +46,13 @@ function PeriodoHechoItem(props) {
       </div>
       <div className='list-item-content'>
         <div className='date'>
-        {show_fecha_inicio != show_fecha_fin
-          ?
-            [<span className='inicio'>{show_fecha_inicio}</span>-<span className='fin'>{show_fecha_fin}</span>]
-          :
-            [<span className='inicio'>{show_fecha_inicio}</span>]
-        }        </div>
-        <ItemTitle title={props.item.title.rendered} linkTo={'/'+props.item.type+'/'+props.item.slug} heading='2' />
+          [<span className='inicio'>{show_fecha_inicio}</span>-<span className='fin'>{show_fecha_fin}</span>]
+        </div>
+        <ItemTitle title={props.item.title.rendered} linkTo={'/'+props.item.type+'/'+props.item.slug} />
         <div className='excerpt'>{renderHTML(props.item.excerpt.rendered)}</div>
       </div>
     </article>
   )
 }
 
-module.exports = PeriodoHechoItem;
+module.exports = TopicoItem;

@@ -6,7 +6,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 module.exports = {
   devtool: 'cheap-module-source-map',
   entry: [
-    'webpack-dev-server/client?http://dev.emmanozzi.org/',
+    'webpack-dev-server/client?http://emmanozzi.org/',
     './src/index.js',
   ],
   output: {

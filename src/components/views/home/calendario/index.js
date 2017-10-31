@@ -1,6 +1,11 @@
 var React = require('react');
 var axios = require('axios');
+var WpApi = require('wp/api');
+var WpItemTitle = require('wp/item-title');
+var WpItemImage = require('wp/item-image');
 var FontAwesome = require('react-fontawesome');
+var renderHTML = require('react-render-html');
+
 import BigCalendar from 'react-big-calendar';
 import moment from 'moment';
 
@@ -36,6 +41,7 @@ class Calendario extends React.Component {
     }
 
     this.getEvents = this.getEvents.bind(this);
+    this.fetchEvents = this.fetchEvents.bind(this);
     this.onNavigate = this.onNavigate.bind(this);
     this.onSelectEvent = this.onSelectEvent.bind(this);
     this.onSelectSlot = this.onSelectSlot.bind(this);
@@ -61,9 +67,13 @@ class Calendario extends React.Component {
 
     var debug = true;
 
-    var calId = 'linkerx.com.ar_mshat57sculhtpe3hbe0tleco4@group.calendar.google.com'
-    var apiKey = 'AIzaSyCNWbiphmOQ0cYa7AV4PneCGwaezMLQt0M'
+    var apiKey = 'AIzaSyCNWbiphmOQ0cYa7AV4PneCGwaezMLQt0M';
+
+    var calId = 'linkerx.com.ar_mshat57sculhtpe3hbe0tleco4@group.calendar.google.com';
+    var calId2 = 'museoema@gmail.com';
+
     var url = 'https://www.googleapis.com/calendar/v3/calendars/'+calId+'/events?key='+apiKey+'&timeMin='+min+'&timeMax='+max+'&showDeleted=false&singleEvents=true';
+    var url2 = 'https://www.googleapis.com/calendar/v3/calendars/'+calId2+'/events?key='+apiKey+'&timeMin='+min+'&timeMax='+max+'&showDeleted=false&singleEvents=true';
 
     if(debug){
       console.log(url);
@@ -74,6 +84,14 @@ class Calendario extends React.Component {
       items: [],
       itemsToday: []
     }
+
+    this.fetchEvents(url,min,'calefe');
+    this.fetchEvents(url2,min,'calema');
+  }
+
+  fetchEvents(url,min,evClass){
+
+    var debug = true;
 
     axios.get(url)
       .then(function(response) {
@@ -89,43 +107,49 @@ class Calendario extends React.Component {
                 var finalItems = response.data.items.map(function(item,index){
 
                 if(start){
-                  var start = new Date(item.start.dateTime)
+                  var start = moment(item.start.dateTime);
                 } else {
-                  var start = new Date(item.start.date)
+                  var start = moment(item.start.date)
                 }
+
+                console.log(moment(item.start.dateTime));
 
                 if(end){
-                  var end = new Date(item.end.dateTime)
+                  var end = moment(item.start.dateTime);
                 } else {
-                  var end = new Date(item.end.date)
+                  var end = moment(item.end.date)
                 }
 
-                start.setHours(start.getHours() + 3 );
+                start._d.setHours(start._d.getHours() + 3 );
 
+                var ev_day = new Date(start._d.getFullYear()+'-'+start._d.getMonth()+'-'+start._d.getDate()+'[T00:00:00Z]');
                 var today = new Date(moment().format('YYYY-MM-DD[T00:00:00Z]'));
-                today.setHours(today.getHours() + 3 );
+
 
                 var resp =  {
                   title: item.summary,
                   start: start,
                   end: end,
-                  allDay: true
+                  allDay: true,
+                  desc: item.description,
+                  evClass: evClass,
+
                 }
 
-                if(start.getTime() === today.getTime()){
+                console.log(resp);
+
+
+                if(today.getTime() === ev_day.getTime()){
                   itemsToday.push(resp);
                 }
 
                 return resp;
-
               }.bind(this))
-
-
             }
             return {
               mes: min,
-              items: finalItems,
-              itemsToday: itemsToday
+              items: this.state.items.concat(finalItems),
+              itemsToday: this.state.itemsToday.concat(itemsToday)
             }
           }.bind(this));
     }.bind(this));
@@ -133,15 +157,39 @@ class Calendario extends React.Component {
   }
 
   onSelectEvent(event){
-    this.setState(function(){
-      return {
-        modalOpen: true,
-        modalItem: {
-            event: event,
-            post: null
-          }
+
+    if(event.desc){
+      var opts = {
+        type: 'post',
+        id: event.desc,
+        queries: ['_embed'],
+        debug: true
       }
-    })
+
+      WpApi.getItem(opts)
+        .then(function(item){
+          console.log(item);
+          this.setState(function(){
+            return {
+              modalOpen: true,
+              modalItem: {
+                  event: event,
+                  post: item
+                }
+            }
+          }.bind(this));
+        }.bind(this));
+    } else {
+      this.setState(function(){
+        return {
+          modalOpen: true,
+          modalItem: {
+              event: event,
+              post: null
+            }
+        }
+      })
+    }
   }
 
   onSelectSlot(slotInfo){
@@ -157,9 +205,20 @@ class Calendario extends React.Component {
   }
 
   render() {
+
+    console.log(this.state);
+
     var modalStyle = 'closed';
     if(this.state.modalOpen){
         modalStyle = 'opened';
+    }
+
+    if(this.state.modalItem){
+      if(this.state.modalItem.post){
+        if(this.state.modalItem.post._embedded['wp:featuredmedia']){
+          var post_image = this.state.modalItem.post._embedded['wp:featuredmedia'][0].media_details.sizes['thumbnail'].source_url;
+        }
+      }
     }
 
     return (
@@ -202,15 +261,29 @@ class Calendario extends React.Component {
                   this.onSelectSlot(slotInfo);
                 }.bind(this)
               }
+              eventPropGetter={
+                function(event){
+                  return {
+                    className: event.evClass
+                  }
+                }
+              }
             />
           </div>
           <div className={'calendar-modal '+modalStyle} >
-            <button onClick={function(){this.closeModal()}.bind(this)}><FontAwesome name='close' /></button>
+            <button className='close-btn' onClick={function(){this.closeModal()}.bind(this)}>
+              <FontAwesome name='close' />
+            </button>
             {this.state.modalItem &&
               <div className='modal-content'>
               {this.state.modalItem.post
                 ?
-                <div className='title'>{this.state.modalItem.event.title}</div>
+                <div className='post_content'>
+                  <WpItemTitle linkTo='#' title={this.state.modalItem.post.title.rendered} heading='2' />
+                  {post_image && <WpItemImage src={post_image} render='img'/>}
+                  <div className='excerpt'>{renderHTML(this.state.modalItem.post.excerpt.rendered)}</div>
+                  <div className='content'>{renderHTML(this.state.modalItem.post.content.rendered)}</div>
+                </div>
                 :
                 <div className='no-item'>
                   <h3>{this.state.modalItem.event.title}</h3>

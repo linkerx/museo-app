@@ -106,6 +106,18 @@ section#home-calendario .calendar-container .rbc-row-content {
   font-size: 0.7em;
 }
 
+section#home-calendario .calendar-container .rbc-event.calema {
+  border: 1px solid #BDB634;
+  background-color: #FBE983;
+  color: #000;
+}
+
+section#home-calendario .calendar-container .rbc-event.calefe {
+  border: 1px solid #75481E;
+  background-color: #AC725E;
+  color: #000;
+}
+
 section#home-calendario .day-container {
   position: absolute;
   top: 80px;
@@ -239,6 +251,41 @@ section#home-calendario .calendar-modal {
   box-shadow: 2px 2px 5px #aaa;
 }
 
+section#home-calendario .calendar-modal h2 {
+  font-size: 1.8em;
+}
+
+section#home-calendario .calendar-modal .excerpt{
+  font-style: italic;
+  font-size: 1.2em;
+}
+
 section#home-calendario .calendar-modal.closed {
   display:none;
+}
+
+section#home-calendario .calendar-modal button.close-btn {
+  position: absolute;
+  top:0;
+  right:0;
+}
+
+section#home-calendario .calendar-modal .post_content {
+  width: 94%;
+  padding: 10px 3%;
+  height: 380px;
+  overflow-y: auto;
+}
+
+section#home-calendario .calendar-modal .image_container {
+  width: 30%;
+  height: auto;
+  float: left;
+  margin-right: 1%;
+  margin-bottom: 5px;
+}
+
+section#home-calendario .calendar-modal .no-item {
+  margin-top: 50px;
+  text-align: center;
 }
