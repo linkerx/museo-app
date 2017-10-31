@@ -12,8 +12,9 @@ var Topico = require('./views/museo/topico/single');
 var Hecho = require('./views/museo/hecho');
 var Ejes = require('./views/museo/escuela/list');
 var Eje = require('./views/museo/escuela/single');
+var Objetos = require('./views/museo/objeto/list');
+var Objeto = require('./views/museo/objeto/single');
 var WpSite = require('wp/site');
-
 
 class Main extends React.Component {
 
