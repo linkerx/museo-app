@@ -40,15 +40,15 @@ function EjeItem(props) {
   return(
     <article>
       <div className='list-item-image'>
-        <Link to={'/escuela/'+props.item.type+'/'+props.item.slug} >
-          <ItemImage render='back' src={item_image} />
+        <Link to={'/'+props.item.type+'/'+props.item.slug} >
+          <ItemImage render='back' src={item_image} linkTo={'/escuela/'+props.item.type+'/'+props.item.slug} />
         </Link>
       </div>
       <div className='list-item-content'>
         <div className='date'>
           [<span className='inicio'>{show_fecha_inicio}</span>-<span className='fin'>{show_fecha_fin}</span>]
         </div>
-        <ItemTitle title={props.item.title.rendered} linkTo={'/escuela/'+props.item.type+'/'+props.item.slug} />
+        <ItemTitle title={props.item.title.rendered} linkTo={'/escuela/'+props.item.type+'/'+props.item.slug} heading='2' />
         <div className='excerpt'>{renderHTML(props.item.excerpt.rendered)}</div>
       </div>
     </article>

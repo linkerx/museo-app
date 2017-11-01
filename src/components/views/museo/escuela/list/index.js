@@ -3,11 +3,12 @@ var Cargando = require('utils/cargando');
 var WpApi = require('wp/api');
 var EjeItem = require('./listItem');
 var ListStyleButtons = require('./listStyleButtons');
+var BuscadorEjes = require('./buscadorEjes');
 require('./styles.less');
 require('./styles_as_icons.less');
 require('./styles_as_list.less');
 
-class Escuela extends React.Component {
+class Ejes extends React.Component {
 
   constructor(props) {
     super(props);
@@ -33,21 +34,27 @@ class Escuela extends React.Component {
 
     var queries = [
       '_embed',
-      'filter[orderby]=meta_value_num',
-      'filter[meta_key]=inicio',
-      'filter[order]=ASC'
     ];
 
     var opts = {
-      url: this.props.url,
+      url: null,
       type: 'eje',
       queries: queries,
-      debug: true
+      debug: false
     }
 
     WpApi.getList(opts)
       .then(function(items) {
         this.setState(function () {
+
+          items.sort(function(a,b){
+            if(a.inicio < b.inicio) return -1;
+            if(a.inicio > b.inicio) return 1;
+            return 0;
+          });
+
+          setTimeout(function(){this.props.ready()}.bind(this), 1000);
+
           return {
             items: items,
             listStyle: this.state.listStyle
@@ -67,8 +74,9 @@ class Escuela extends React.Component {
 
   render() {
     return (
-      <section id="escuela" className={this.state.listStyle}>
-        <h1>Escuela</h1>
+      <section id="archive-ejes" className={this.state.listStyle}>
+        <h1>Escuela - Ejes Temáticos</h1>
+        <BuscadorEjes />
         <ListStyleButtons changeStyle={this.changeStyle} actualStyle={this.state.listStyle} />
         <div className='list'>
         {!this.state.items
@@ -77,7 +85,7 @@ class Escuela extends React.Component {
           :
           this.state.items.map(function (item, index) {
             return (
-              <EjeItem key={item.id} item={item} defaultImg='public/images/noimage.jpg' />
+              <EjeItem key={item.id} item={item} defaultImg='/public/images/noimage.jpg' />
             )
           }.bind(this))
         }
@@ -88,5 +96,4 @@ class Escuela extends React.Component {
 }
 
 // TODO: propTypes
-
-module.exports = Escuela;
+module.exports = Ejes;

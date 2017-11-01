@@ -1,36 +1,37 @@
 @import (reference) "common/default.less";
 
-#eje .hechos .list {
+#eje .hechos .list-locales {
   display:block;
   width:100%;
   margin-left:0;
-  margin-top: 4vh;
+  margin-top: 10px;
 }
 
-#eje .hechos .list article {
+#eje .hechos .list-locales > h2 {
+  margin-top: 10px;
+  background-color: #0a7442;
+  padding: 10px 2%;
+  width: 96%;
+  color: #fff;
+  margin-bottom: 30px;
+}
+
+#eje .hechos .list-locales article {
   position:relative;
   width: 100%;
-  height: 25vh;
+  height: 200px;
+  margin-bottom:30px;
   display: flex;
-
-  @media @narrow, @super-narrow {
-    height: 35vh;
-    margin-bottom:3vh;
-  }
 }
 
-#eje .hechos .list article .list-item-image {
-  width: 25vh;
-
-  @media @narrow, @super-narrow {
-    margin-top: 3vh;
-  }
+#eje .hechos .list-locales article .list-item-image {
+  width: 200px;
 }
 
-#eje .hechos .list article .list-item-content {
+#eje .hechos .list-locales article .list-item-content {
   width: auto;
   margin-left: 2%;
-  height: 20vh;
+  height:200px;
   overflow-y: auto;
   padding-right: 2%;
   position: relative;
@@ -45,28 +46,28 @@
   }
 }
 
-#eje .hechos .list article h2 {
+#eje .hechos .list-locales article h2 {
   font-size: 1.5em;
-  margin-top: 1vh;
+  margin-top: 10px;
 }
 
 
-#eje .hechos .list article .excerpt {
+#eje .hechos .list-locales article .excerpt {
   width:100%;
 }
 
-#eje .hechos .list article  .image_container {
-  width: 100%;
-  height: 15vh;
+#eje .hechos .list-locales article  .image_container {
+  width: 200px;
+  height: 200px;
   margin: auto;
   position:relative;
 
 }
 
-#eje .hechos .list article .image_container .image{
+#eje .hechos .list-locales article .image_container .image{
   position:absolute;
-  width:20vh;
-  height:20vh;
+  width:200px;
+  height:200px;
   background-position: center;
   background-repeat: no-repeat;
   background-size: 100%;
@@ -76,30 +77,54 @@
   transition: background-size 10s ease;
 }
 
-#eje .hechos .list article .image_container .image:hover{
+#eje .hechos .list-locales article .image_container .image:hover{
   background-size: 150%;
 }
 
-#eje .hechos .list article .date {
+#eje .hechos .list-locales article .date {
   position:absolute;
   top:0;
   right:2%;
-  font-size: 0.6em;
+  font-size: 0.8em;
   font-weight: bold;
-  margin-top: 2vh;
+  margin-top: 15px;
 
   @media @narrow, @super-narrow {
     position: relative;
+      right:0;
 
   }
 }
 
-#eje .hechos .list article .date .inicio {
+#eje .hechos .list-locales article .date .inicio {
   margin-right: 15px;
   font-weight: bold;
 }
 
-#eje .hechos .list article .date .fin {
+#eje .hechos .list-locales article .date .fin {
   margin-left: 15px;
   font-weight: bold;
+}
+
+#eje .hechos .list-nacionales > h2,
+#eje .hechos .list-internacionales > h2 {
+  margin-top: 10px;
+  background-color: #0a7442;
+  padding: 10px 2%;
+  width: 96%;
+  color: #fff;
+  margin-bottom: 30px;
+}
+
+#eje .hechos .list-nacionales .list-item-content > h2,
+#eje .hechos .list-internacionales .list-item-content > h2 {
+  margin-top: 5px;
+  margin-bottom: 20px;
+}
+
+#eje .hechos .list-nacionales article .image_container,
+#eje .hechos .list-nacionales article .excerpt,
+#eje .hechos .list-internacionales article .image_container,
+#eje .hechos .list-internacionales article .excerpt {
+  display: none;
 }
