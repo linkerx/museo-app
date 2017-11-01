@@ -5,7 +5,7 @@ var Cargando = require('utils/cargando');
 var FontAwesome = require('react-fontawesome');
 var renderHTML = require('react-render-html');
 var TopicoHechoItem = require('./hechoItem');
-var FullscreenImage = require('utils/fullscreenImage');
+var FullscreenImage = require('wp/fullscreenImage');
 var Link = require('react-router-dom').Link;
 require('./styles.less');
 require('./hechos.less');

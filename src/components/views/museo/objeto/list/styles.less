@@ -1,0 +1,55 @@
+@import (reference) "common/default.less";
+
+section#objetos {
+  padding-top: 80px;
+  margin: auto;
+  .articleWidth;
+}
+
+section#objetos .list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  width:100%;
+  margin:auto;
+}
+
+section#objetos .list article {
+  width: 21%;
+  margin-bottom: 20px;
+
+  @media @wide {
+    width: 30%;
+  }
+
+  @media @square {
+    width: 42%;
+  }
+
+  @media @narrow, @super-narrow {
+    width: 90%;
+  }
+}
+
+section#objetos .list article h2 {
+  font-size: 1.3em;
+  text-align: center;
+}
+
+section#objetos .list article .image_container{
+  width:100%;
+  height: auto;
+  margin-bottom:10px;
+  text-align: center;
+}
+
+section#objetos .list article .image_container img {
+  width:auto;
+  max-width: 100%;
+  height:auto;
+  max-height: 200px;
+}
+
+section#objetos .list article .date {
+  display:none;
+}
