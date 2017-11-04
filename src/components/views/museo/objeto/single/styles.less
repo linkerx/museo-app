@@ -1,11 +1,15 @@
 @import (reference) "common/default.less";
 
-#topico {
+#objeto {
   position:relative;
 }
 
-#topico article .header,
-#topico article .header .image_container {
+#objeto article .header {
+  padding-top: 110px;
+}
+
+#objeto article .header,
+#objeto article .header .image_container {
   height: 700px;
   width: 100%;
   position:relative;
@@ -23,48 +27,39 @@
   }
 }
 
-#topico article .header .image_container .image {
+#objeto article .header .image_container .image {
   position:absolute;
   width:100%;
-  height:100%;
+  height:90%;
   background-repeat: no-repeat;
   background-position: center 90%;
-  background-size: cover;
-  background-attachment: fixed;
+  background-size: contain;
 }
 
-#topico article .header .open-trigger {
+#objeto article .header .open-trigger {
   position:absolute;
   top:80px;
   right:30px;
 }
 
-#topico article .header .open-trigger span.fa {
+#objeto article .header .open-trigger span.fa {
   font-size: 50px;
   color: #6eb444;
   text-shadow: 0px 0px 3px #000,2px 2px 5px #000;
   cursor: pointer;
 }
 
-#topico article .header .open-trigger span.fa:hover {
+#objeto article .header .open-trigger span.fa:hover {
   color: #0a7442;
 }
 
-#topico article .header h1 {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 96%;
+#objeto article .header h1 {
+  margin-left: 5%;
+  width: 90%;
   text-align: center;
-  border: 0;
-  color: #fff;
-  font-size: 2.5em;
-  background-color: rgba(0,0,0,0.5);
-  margin: 0;
-  padding: 20px 2%;
 }
 
-#topico article .header .date {
+#objeto article .header .date {
   position: absolute;
   top: 2vh;
   right: 2%;
@@ -76,38 +71,38 @@
   font-size: 1em;
 }
 
-#topico article .header .return {
+#objeto article .header .return {
   position:absolute;
   top:80px;
   left:20px;
 }
 
-#topico article .header .return .fa {
+#objeto article .header .return .fa {
   font-size: 50px;
   color: #6eb444;
   text-shadow: 0px 0px 3px #000,2px 2px 5px #000;
   cursor: pointer;
 }
 
-#topico article .header .return .fa:hover {
+#objeto article .header .return .fa:hover {
   color: #0a7442;
 }
 
-#topico article .date .inicio {
+#objeto article .date .inicio {
   margin-right: 15px;
 }
 
-#topico article .date .fin {
+#objeto article .date .fin {
   margin-left: 15px;
 }
 
-#topico article .post-content {
+#objeto article .post-content {
   margin:auto;
   margin-top: 20px;
   .articleWidth;
 }
 
-#topico article .post-content .show-full-button button{
+#objeto article .post-content .show-full-button button{
   margin: 1vh 0;
   background-color: #fff;
   color:#333;
@@ -116,63 +111,63 @@
   cursor: pointer;
 }
 
-#topico article .post-content .show-full-button button:hover {
+#objeto article .post-content .show-full-button button:hover {
   color: #7a929e;
 }
 
-#topico article .post-content .show-full-button button span:before {
+#objeto article .post-content .show-full-button button span:before {
   background-color: #fff;
   color:#333;
 }
 
-#topico article .post-content .show-full-button button:hover span:before {
+#objeto article .post-content .show-full-button button:hover span:before {
   color: #7a929e;
 }
 
-#topico article .post-content {
+#objeto article .post-content {
   text-align: justify;
 }
 
-#topico article .post-content h1 {
+#objeto article .post-content h1 {
   margin-top:15px;
 }
 
-#topico article .post-content p {
+#objeto article .post-content p {
   margin-bottom: 20px;
 }
 
-#topico article .post-content p img {
+#objeto article .post-content p img {
   @media @narrow, @super-narrow {
     width:100%;
   }
 }
 
-#topico article .post-content p img.alignleft,
-#topico article .post-content .wp-caption.alignleft {
+#objeto article .post-content p img.alignleft,
+#objeto article .post-content .wp-caption.alignleft {
   float: left;
   margin: 10px;
   margin-left: 0;
 }
 
-#topico article .post-content .wp-caption .wp-caption-text{
+#objeto article .post-content .wp-caption .wp-caption-text{
   font-size: 0.8em;
   color: #999;
 }
 
-#topico article .post-content p img.alignright,
-#topico article .post-content .wp-caption.alignright {
+#objeto article .post-content p img.alignright,
+#objeto article .post-content .wp-caption.alignright {
   float: right;
   margin: 10px;
   margin-right: 0;
 }
 
-#topico article .post-content ul li {
+#objeto article .post-content ul li {
   list-style: circle;
   margin-left: 20px;
   margin-bottom: 15px;
 }
 
-#topico article .post-content blockquote {
+#objeto article .post-content blockquote {
   width: 86%;
   padding: 10px 2%;
   border: 1;
@@ -184,10 +179,10 @@
   color: #fff;
 }
 
-#topico article .hechos {
+#objeto article .hechos {
   margin-top: 2vh;
 }
 
-#topico article .hechos article {
+#objeto article .hechos article {
   position:relative;
 }

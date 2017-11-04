@@ -91,7 +91,7 @@ class Calendario extends React.Component {
 
   fetchEvents(url,min,evClass){
 
-    var debug = true;
+    var debug = false;
 
     axios.get(url)
       .then(function(response) {
@@ -112,7 +112,7 @@ class Calendario extends React.Component {
                   var start = moment(item.start.date)
                 }
 
-                console.log(moment(item.start.dateTime));
+                //console.log(moment(item.start.dateTime));
 
                 if(end){
                   var end = moment(item.start.dateTime);
@@ -122,9 +122,8 @@ class Calendario extends React.Component {
 
                 start._d.setHours(start._d.getHours() + 3 );
 
-                var ev_day = new Date(start._d.getFullYear()+'-'+start._d.getMonth()+'-'+start._d.getDate()+'[T00:00:00Z]');
+                var ev_day = new Date(start.format('YYYY-MM-DD[T00:00:00Z]'));
                 var today = new Date(moment().format('YYYY-MM-DD[T00:00:00Z]'));
-
 
                 var resp =  {
                   title: item.summary,
@@ -136,8 +135,7 @@ class Calendario extends React.Component {
 
                 }
 
-                console.log(resp);
-
+                console.log("compara",today.getTime(),start,ev_day.getTime());
 
                 if(today.getTime() === ev_day.getTime()){
                   itemsToday.push(resp);
@@ -206,7 +204,7 @@ class Calendario extends React.Component {
 
   render() {
 
-    console.log(this.state);
+    //console.log(this.state);
 
     var modalStyle = 'closed';
     if(this.state.modalOpen){
@@ -219,6 +217,19 @@ class Calendario extends React.Component {
           var post_image = this.state.modalItem.post._embedded['wp:featuredmedia'][0].media_details.sizes['thumbnail'].source_url;
         }
       }
+    }
+
+    var espMessages = {
+      date: 'Fecha',
+      time: 'Hora',
+      allDay: 'Todo el Día',
+      previous: 'Anterior',
+      next: 'Próximo',
+      today: 'Hoy',
+      month: 'Mes',
+      week: 'Semana',
+      day: 'Día',
+      agenda: 'Agenda',
     }
 
     return (
@@ -237,8 +248,8 @@ class Calendario extends React.Component {
               ?
                 <ul>
                 {this.state.itemsToday.map(function(item,index){
-                  return (<li key={index}>{item.title}</li>)
-                })}
+                  return (<li key={index} onClick={function(){this.onSelectEvent(item)}.bind(this)} >{item.title}</li>)
+                }.bind(this))}
                 </ul>
               :
               <div>No hay efemérides para hoy</div>
@@ -268,29 +279,31 @@ class Calendario extends React.Component {
                   }
                 }
               }
+              messages = {espMessages}
             />
           </div>
+          <div className={'modal-back '+modalStyle}></div>
           <div className={'calendar-modal '+modalStyle} >
             <button className='close-btn' onClick={function(){this.closeModal()}.bind(this)}>
               <FontAwesome name='close' />
             </button>
             {this.state.modalItem &&
-              <div className='modal-content'>
-              {this.state.modalItem.post
-                ?
-                <div className='post_content'>
-                  <WpItemTitle linkTo='#' title={this.state.modalItem.post.title.rendered} heading='2' />
-                  {post_image && <WpItemImage src={post_image} render='img'/>}
-                  <div className='excerpt'>{renderHTML(this.state.modalItem.post.excerpt.rendered)}</div>
-                  <div className='content'>{renderHTML(this.state.modalItem.post.content.rendered)}</div>
+                <div className='modal-content'>
+                {this.state.modalItem.post
+                  ?
+                  <div className='post_content'>
+                    <WpItemTitle linkTo='#' title={this.state.modalItem.post.title.rendered} heading='2' />
+                    {post_image && <WpItemImage src={post_image} render='img'/>}
+                    <div className='excerpt'>{renderHTML(this.state.modalItem.post.excerpt.rendered)}</div>
+                    <div className='content'>{renderHTML(this.state.modalItem.post.content.rendered)}</div>
+                  </div>
+                  :
+                  <div className='no-item'>
+                    <h3>{this.state.modalItem.event.title}</h3>
+                    <span>Sin Descripcion</span>
+                  </div>
+                }
                 </div>
-                :
-                <div className='no-item'>
-                  <h3>{this.state.modalItem.event.title}</h3>
-                  <span>Sin Descripcion</span>
-                </div>
-              }
-              </div>
             }
           </div>
         </div>

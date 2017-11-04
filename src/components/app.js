@@ -51,7 +51,7 @@ class App extends React.Component {
       <Router history={Piwik.connectToHistory(history)}>
         <div className='main'>
           <div className='loading-icon'>
-            <img src='public/assets/images/loading.gif' />
+            <img src='/public/assets/images/loading.gif' />
           </div>
           <Route path='/' render={ function(props) { return ( <Menu {...props} show={this.endLoading} open={this.state.menuOpen} closeMenu={this.closeMenu} /> ) }.bind(this) } />
           <Route path='/' render={ function(props) { return ( <Header {...props} show={this.endLoading} menuOpen={this.state.menuOpen} openMenu={this.openMenu} /> ) }.bind(this) } />

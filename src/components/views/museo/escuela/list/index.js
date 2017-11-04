@@ -1,6 +1,7 @@
 var React = require('react');
 var Cargando = require('utils/cargando');
 var WpApi = require('wp/api');
+var WpItem = require('wp/item');
 var EjeItem = require('./listItem');
 var ListStyleButtons = require('./listStyleButtons');
 var BuscadorEjes = require('./buscadorEjes');
@@ -75,7 +76,8 @@ class Ejes extends React.Component {
   render() {
     return (
       <section id="archive-ejes" className={this.state.listStyle}>
-        <h1>Escuela - Ejes Temáticos</h1>
+        <h1>Escuela</h1>
+        <WpItem type='page' slug='intro-escuela' articleClass='intro-escuela'/>
         <BuscadorEjes />
         <ListStyleButtons changeStyle={this.changeStyle} actualStyle={this.state.listStyle} />
         <div className='list'>

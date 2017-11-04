@@ -19,7 +19,7 @@ function Accesos () {
         <Link to='/topicos'>
           <WpItemImage src='/public/assets/images/topicos3.jpg' render='back'/>
           <h2>Tópicos</h2>
-          <span>En los tópicos encontramos temas puntuales de nuestra historia, temas que despiertan curiosidad e interés general.</span>
+          <span>En los tópicos encontramos temas puntuales de nuestra historia, temas de interés regional.</span>
         </Link>
       </li>
       <li>
