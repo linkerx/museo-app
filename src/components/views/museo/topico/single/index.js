@@ -151,6 +151,7 @@ class Topico extends React.Component {
         } else {
           var item_image = this.state.item._embedded['wp:featuredmedia'][0].media_details.sizes['full'].source_url;
         }
+        var item_image_caption = this.state.item._embedded['wp:featuredmedia'][0].caption.rendered;
       }
     }
 
@@ -201,7 +202,7 @@ class Topico extends React.Component {
               {item_image &&
                 <div>
                   <WpItemImage src={item_image} render='back'/>
-                  <FullscreenImage imageSrc={item_image} modalContainer='museo-modal' />
+                  <FullscreenImage imageSrc={item_image} modalContainer='museo-modal' desc={item_image_caption} />
                 </div>
               }
               <h1>{this.state.item.title.rendered}</h1>

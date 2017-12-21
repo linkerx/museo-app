@@ -31,10 +31,14 @@ header .site-title .subtitle {
   display: block;
   position: absolute;
   top: 23px;
-  left: 230px;
+  left: 200px;
   width: 560px;
   font-size: 1em;
   color: #aaa;
+
+  @media @square, @narrow, @super-narrow {
+    display:none;
+  }
 }
 
 /* PANTALLA PRINCIPAL */
