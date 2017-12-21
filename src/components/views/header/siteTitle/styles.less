@@ -1,146 +1,111 @@
 @import (reference) "common/default.less";
 
-header .site-title {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    width: auto;
-    @media @narrow, @super-narrow {
-      left: 0;
-      top: 10px;
-      width: 100%;
-  }
+header .site-title {}
+
+header .site-title .bapro {
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
 }
 
-header .site-title .logo{
-    position:absolute;
-    top:0;
-    left:10px;
-    background-image: url('/public/assets/images/bp.png');
-    background-size: 100%;
-    background-repeat: no-repeat;
-    height: 40px;
-    width: 31px;
-    cursor:pointer;
-    @media @narrow, @super-narrow {
-      height: 40px;
-    }
-}
-
-header .site-title .logo:hover {
-  filter: brightness(80%);
+header .site-title .bapro .logo {
+  display:none;
 }
 
 header .site-title .title {
-    position:absolute;
-    left: 50px;
-    top: 5px;
-    width:500px;
-
-    @media @narrow, @super-narrow {
-      left:0;
-      width: 100%;
-      position: absolute;
-      text-align: center;
-      margin:0;
-    }
+  position: absolute;
+  left: 20px;
+  top: 23px;
+  width: 200px;
 }
 
 header .site-title .title a {
-    font-size: 14px;
-    font-weight: bold;
-    margin:0;
-    line-height: 14px;
-}
-
-header.bar .site-title .title div,
-header.tobar .site-title .title div {
-  font-size: 14px;
-  height: 14px;
-  line-height: 14px;
-  margin-top:3px;
-}
-
-header.bar .site-title .title .bapro,
-header.tobar .site-title .title .bapro {
-}
-
-header .site-title .title .bapro a {
-    color: @color-4;
-}
-
-header .site-title .title .emma a {
-    color: #333;
-    font-size: 16px;
+  font-size: 16px;
+  font-weight: bold;
+  color: @color-2;
 
 }
 
-header .site-title .title a:hover {
-    color: @color-5;
+header .site-title .subtitle {
+  display: block;
+  position: absolute;
+  top: 23px;
+  left: 230px;
+  width: 560px;
+  font-size: 1em;
+  color: #aaa;
 }
 
 /* PANTALLA PRINCIPAL */
 
-header.full .site-title,
-header.tofull .site-title {
-  width:100%;
-}
-
-header.full .site-title .logo,
-header.tofull .site-title .logo {
-    background-image: url('/public/assets/images/bp.png');
-    top:70px;
-    height: 72px;
-    width: 60px;
-    left: 46px;
-
-    @media @square {
-      height: 62px;
-      width: 53px;
-    }
-
-    @media @narrow, @super-narrow {
-      top:0;
-      left:10px;
-      height: 40px;
-      width: 31px;
-    }
-}
-
-header.full.menu-opened .site-title,
-header.tofull.menu-opened .site-title {
-  left:8%;
+header.full .site-title .bapro .logo,
+header.tofull .site-title .bapro .logo {
+  display: block;
+  position: absolute;
+  top: 108px;
+  right: 50px;
+  background-image: url('/public/assets/images/bapro/bapro_100h.jpg');
+  background-size: auto 80px;
+  background-repeat: no-repeat;
+  height: 80px;
+  width: 210px;
+  cursor: pointer;
 
   @media @square {
-    left: 2%;
+    background-size: auto 60px;
+    height: 60px;
+    width: 170px;
   }
 
   @media @narrow, @super-narrow {
-    left:0;
+    width:100%;
+    background-position: center;
+    right:0;
+    top: 140px;
+    background-size: auto 50px;
+    height: 50px;
+
   }
 }
 
 header.full .site-title .title,
 header.tofull .site-title .title {
-  top: 88px;
-  left: 120px;
-  width: 100%;
+  position: absolute;
+  left: 50px;
+  top: 98px;
+  width: 500px;
+
+  @media @narrow, @super-narrow {
+    left: 0;
+    top: 70px;
+    width: 100%;
+    text-align: center;
+  }
+}
+
+header.full .site-title .title a,
+header.tofull .site-title .title a {
+  font-size: 50px;
+  font-weight: normal;
+  font-style: italic;
+  color: @color-6;
 
   @media @square {
-    left: 112px;
+    font-size: 40px;
   }
 
   @media @narrow, @super-narrow {
-    top: 80px;
-    left:0;
+    font-size: 25px;
   }
 }
 
 header.full .site-title .subtitle,
 header.tofull .site-title .subtitle {
+  display: block;
   position: absolute;
   top: 156px;
-  left: 49px;
+  left: 50px;
   width: 560px;
   padding-top: 10px;
   border-top: 1px solid #ccc;
@@ -151,72 +116,15 @@ header.tofull .site-title .subtitle {
     top:145px;
     padding-top: 7px;
     font-size:20px;
+    width:450px;
   }
 
   @media @narrow, @super-narrow {
-    top: 130px;
+    top: 100px;
     left: 10%;
     width: 80%;
     text-align:center;
     font-size: 18px;
     padding-top: 5px;
-  }
-}
-
-header.full.menu-opened .site-title .subtitle,
-header.tofull.menu-opened .site-title .subtitle {
-  display:none;
-}
-
-header.bar .site-title .subtitle,
-header.tobar .site-title .subtitle {
-  display:none;
-}
-
-header.full.menu-opened .site-title .title,
-header.tofull.menu-opened .site-title .title {
-  top: 88px;
-  left: 120px;
-
-  @media @square {
-    left: 120px;
-  }
-
-  @media @narrow, @super-narrow {
-    top: 40px;
-    left: 0;
-  }
-}
-
-header.full .site-title .title div,
-header.tofull .site-title .title div {
-  width:100%;
-}
-
-header.full .site-title .title .emma a,
-header.tofull .site-title .title .emma a {
-  font-size:37px;
-  color: #555;
-  @media @square {
-    font-size:32px;
-  }
-
-  @media @narrow, @super-narrow {
-    font-size: 2em;
-  }
-}
-
-header.full .site-title .title .bapro a,
-header.tofull .site-title .title .bapro a {
-  font-size:32px;
-  line-height: normal;
-  color: @color-4;
-  @media @square {
-    font-size:25px;
-  }
-
-  @media @narrow, @super-narrow {
-    font-size: 1.5em;
-    line-height: 1.4em;
   }
 }

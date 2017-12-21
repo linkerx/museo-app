@@ -4,20 +4,13 @@ const CompressionPlugin = require('compression-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
-  devtool: 'cheap-module-source-map',
   entry: [
-    'webpack-dev-server/client?http://emmanozzi.org/',
     './src/index.js',
   ],
   output: {
     path: path.resolve(__dirname,'public'),
     filename: 'bundle.js',
     publicPath: '/'
-  },
-  devServer: {
-    disableHostCheck: true,
-    historyApiFallback: true,
-    contentBase: '.',
   },
   module: {
     rules: [
@@ -45,7 +38,12 @@ module.exports = {
       path.resolve('./node_modules')
     ]
   },
-  plugins: [new HtmlWebpackPlugin({
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify('production')
+    }),
+
+  new HtmlWebpackPlugin({
       template: 'src/index.html',
       minify: {
         collapseWhitespace: true,
