@@ -4,8 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --host 0.0.0.0 --port 8080",
-    "build": "webpack -p --config webpack.config.prod.js"
+    "start": "webpack-dev-server --host 0.0.0.0 --port 8080"
   },
   "babel": {
     "presets": [
@@ -26,9 +25,9 @@
     "react": "^15.5.4",
     "react-big-calendar": "^0.14.4",
     "react-dom": "^15.5.4",
-    "react-fontawesome": "^1.6.1",
     "react-render-html": "^0.5.0",
-    "react-router-dom": "^4.1.1"
+    "react-router-dom": "^4.1.1",
+    "react-share": "^2.1.0"
   },
   "devDependencies": {
     "babel-core": "^6.24.1",

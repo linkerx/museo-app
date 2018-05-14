@@ -205,7 +205,7 @@ class Periodo extends React.Component {
                   <FullscreenImage imageSrc={item_image} modalContainer='museo-modal' desc={item_image_caption} />
                 </div>
               }
-              <h1>{this.state.item.title.rendered}</h1>
+              <h1>{renderHTML(this.state.item.title.rendered)}</h1>
               <div className='date'>
                 {show_fecha_inicio != show_fecha_fin
                   ?

@@ -61,9 +61,14 @@ class Hecho extends React.Component {
 
   render() {
 
-    if(this.state.item){
-      if(this.state.item._embedded && this.state.item._embedded['wp:featuredmedia']){
-        var item_image = this.state.item._embedded['wp:featuredmedia'][0].media_details.sizes['full'].source_url;
+    if(this.state.item && this.state.item._embedded){
+      if(this.state.item._embedded['wp:featuredmedia']){
+        if(this.state.item._embedded['wp:featuredmedia'][0].media_details.sizes['large']){
+          var item_image = this.state.item._embedded['wp:featuredmedia'][0].media_details.sizes['large'].source_url;
+        } else {
+          var item_image = this.state.item._embedded['wp:featuredmedia'][0].media_details.sizes['full'].source_url;
+        }
+        var item_image_caption = this.state.item._embedded['wp:featuredmedia'][0].caption.rendered;
       }
     }
 
@@ -111,8 +116,13 @@ class Hecho extends React.Component {
           :
           <article className={hasImageClass}>
             <div className='header'>
-              {item_image && <WpItemImage src={item_image} render='back'/>}
-              <h1>{this.state.item.title.rendered}</h1>
+              {item_image &&
+                <div>
+                  <WpItemImage src={item_image} render='back'/>
+                  <FullscreenImage imageSrc={item_image} modalContainer='museo-modal' desc={item_image_caption} />
+                </div>
+              }
+              <h1>{renderHTML(this.state.item.title.rendered)}</h1>
               <div className='date'>
                 [<span className='inicio'>{show_fecha_inicio}</span>-<span className='fin'>{show_fecha_fin}</span>]
               </div>

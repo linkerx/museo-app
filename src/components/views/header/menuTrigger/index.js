@@ -1,6 +1,5 @@
 var React = require('react');
 var NavLink = require('react-router-dom').NavLink;
-var FontAwesome = require('react-fontawesome');
 require('./styles.less');
 
 function MenuTrigger(props) {
@@ -9,22 +8,22 @@ function MenuTrigger(props) {
 
       <NavLink exact to='/' activeClassName="active">
         <span>Inicio</span>
-        <FontAwesome name='home' />
+        <i class="fas fa-home"></i>
       </NavLink>
 
       <NavLink to='/novedades' activeClassName="active">
         <span>Novedades</span>
-        <FontAwesome name='newspaper-o' />
+        <i class="far fa-newspaper"></i>
       </NavLink>
 
       <NavLink to='/contacto' activeClassName="active">
         <span>Contacto</span>
-        <FontAwesome name='envelope-o ' />
+        <i class="fas fa-envelope"></i>
       </NavLink>
 
       <a className='menu' onClick={props.openMenu} >
         <span>Menu</span>
-        <FontAwesome name='bars' />
+        <i class="fas fa-bars"></i>
       </a>
     </div>
   )

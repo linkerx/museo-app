@@ -1,5 +1,6 @@
 var React = require('react');
 var Link = require('react-router-dom').Link;
+var EnConstruccion = require('utils/enconstruccion');
 require('./styles.less');
 var WpItemImage = require('wp/item-image');
 
@@ -22,9 +23,10 @@ function Accesos () {
           <span>Los tópicos refieren a temas puntuales de nuestro pasado histórico que interesan a la región.</span>
         </Link>
       </li>
-      <li>
-        <Link to='/escuela'>
+      <li className='escuela'>
+        <Link to='/'>
           <WpItemImage src='/public/assets/images/escuela3.jpg' render='back'/>
+          <EnConstruccion></EnConstruccion>
           <h2>Escuela</h2>
           <span>Espacio destinado a alumnos y docentes.</span>
         </Link>

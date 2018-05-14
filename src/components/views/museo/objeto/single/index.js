@@ -95,7 +95,7 @@ class Objeto extends React.Component {
           :
           <article className={hasImageClass}>
             <div className='header'>
-            <h1>{this.state.item.title.rendered}</h1>
+            <h1>{renderHTML(this.state.item.title.rendered)}</h1>
               {item_image &&
                 <div>
                   <WpItemImage src={item_image} render='back' />

@@ -1,10 +1,12 @@
 var React = require('react');
 var WpApi = require('./api');
+var WpUtils = require('wp/utils');
 var WpItemTitle = require('./item-title');
 var WpItemImage = require('./item-image');
 var renderHTML = require('react-render-html');
 var serialize = require('form-serialize');
 var FullModal = require('./fullscreenImage/fullmodal');
+var ShareButtons = require('./shareButtons');
 
 class WpItem extends React.Component {
 
@@ -41,7 +43,9 @@ class WpItem extends React.Component {
    }
 
    var images = document.querySelectorAll('img');
-   console.log(images);
+   if(this.props.debug) {
+       console.log(images);
+   }
    for(var x=0;x<images.length;x++){
       images[x].addEventListener('click',function(){
         FullModal.openFull('museo-modal',this.src,this.alt);
@@ -58,6 +62,7 @@ class WpItem extends React.Component {
 
     var opts = {
       url: this.props.url,
+      site: this.props.site,
       type: this.props.type,
       slug: this.props.slug,
       queries: ['_embed'],
@@ -107,9 +112,27 @@ class WpItem extends React.Component {
   }
 
   render() {
+
+    var ImgSize = 'thumbnail';
+    if(this.props.img_size) {
+        ImgSize = this.props.img_size;
+    }
+
+    var itemLink = '';
+    var share = false;
     if(this.state.item){
-      if(this.state.item._embedded['wp:featuredmedia']){
-        var item_image = this.state.item._embedded['wp:featuredmedia'][0].media_details.sizes['thumbnail'].source_url;
+      /* image */
+      if(this.state.item._embedded && this.state.item._embedded['wp:featuredmedia'] && this.state.item._embedded['wp:featuredmedia'][0].media_details){
+        var item_image = this.state.item._embedded['wp:featuredmedia'][0].media_details.sizes[ImgSize].source_url;
+      }
+      /* link */
+      itemLink = WpUtils.generateItemLinkUrl(this.state.item);
+      /* share */
+      if(this.state.item.type == 'post'){
+          share = true;
+      }
+      if(this.props.share) {
+          share = this.props.share;
       }
     }
 
@@ -128,6 +151,8 @@ class WpItem extends React.Component {
       articleClass = this.props.articleClass;
     }
 
+    var seoFullUrl = window.location.href;
+
     return (
       <article className={articleClass}>
         {!this.state.item
@@ -135,9 +160,12 @@ class WpItem extends React.Component {
           this.props.children
           :
           <div className='post_content'>
+
             {show_title && <WpItemTitle linkTo='#' title={this.state.item.title.rendered} heading={heading} />}
 
             {item_image && <WpItemImage src={item_image} render='img'/>}
+
+            {share && <ShareButtons url={itemLink} quote={this.state.item.title.rendered} />}
 
             {this.state.item.type != 'page' &&
               <div className='excerpt'>{renderHTML(this.state.item.excerpt.rendered)}</div>
