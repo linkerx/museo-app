@@ -2,7 +2,6 @@ var React = require('react');
 var WpApi = require('wp/api');
 var WpItemImage = require('wp/item-image');
 var Cargando = require('utils/cargando');
-var FontAwesome = require('react-fontawesome');
 var renderHTML = require('react-render-html');
 require('./styles.less');
 
@@ -153,7 +152,7 @@ class Hecho extends React.Component {
               <div className='excerpt'>{renderHTML(this.state.item.excerpt.rendered)}</div>
 
               <div className='show-full-button'>
-                <button onClick={() => { this.showFull() }}><FontAwesome name={showFullIcon} /> {'(ver '+showFullText+')'} </button>
+                <button onClick={() => { this.showFull() }}><i class={"fas fa-"+showFullIcon}></i> {'(ver '+showFullText+')'} </button>
               </div>
 
               {this.state.showFull &&

@@ -1,6 +1,6 @@
 var React = require('react');
 var ReactRouter = require('react-router-dom');
-var Router = ReactRouter.BrowserRouter;
+var Router = ReactRouter.Router;
 var Route = ReactRouter.Route;
 var historyCreator = require('history');
 var Piwik = require('./utils/piwik');

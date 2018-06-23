@@ -1,5 +1,4 @@
 var React = require('react');
-var FontAwesome = require('react-fontawesome');
 require('./styles.less');
 
 function ListStyleButtons(props){
@@ -16,8 +15,8 @@ function ListStyleButtons(props){
 
   return(
     <div id='list-style-buttons'>
-      <button className={classList} onClick={() => { props.changeStyle('list') }}><FontAwesome name='list' /></button>
-      <button className={classIcons} onClick={() => { props.changeStyle('icons') }}><FontAwesome name='th' /></button>
+      <button className={classList} onClick={() => { props.changeStyle('list') }}><i class="fas fa-list"></i></button>
+      <button className={classIcons} onClick={() => { props.changeStyle('icons') }}><i class="fas fa-th"></i></button>
     </div>
   )
 }

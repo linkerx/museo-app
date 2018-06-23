@@ -8,22 +8,22 @@ function MenuTrigger(props) {
 
       <NavLink exact to='/' activeClassName="active">
         <span>Inicio</span>
-        <i class="fas fa-home"></i>
+        <i className="fas fa-home"></i>
       </NavLink>
 
       <NavLink to='/novedades' activeClassName="active">
         <span>Novedades</span>
-        <i class="far fa-newspaper"></i>
+        <i className="far fa-newspaper"></i>
       </NavLink>
 
       <NavLink to='/contacto' activeClassName="active">
         <span>Contacto</span>
-        <i class="fas fa-envelope"></i>
+        <i className="fas fa-envelope"></i>
       </NavLink>
 
       <a className='menu' onClick={props.openMenu} >
         <span>Menu</span>
-        <i class="fas fa-bars"></i>
+        <i className="fas fa-bars"></i>
       </a>
     </div>
   )

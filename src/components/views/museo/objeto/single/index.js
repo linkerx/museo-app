@@ -3,7 +3,6 @@ var WpApi = require('wp/api');
 var WpItemImage = require('wp/item-image');
 var Cargando = require('utils/cargando');
 var FullscreenImage = require('wp/fullscreenImage');
-var FontAwesome = require('react-fontawesome');
 var renderHTML = require('react-render-html');
 var Link = require('react-router-dom').Link;
 require('./styles.less');
@@ -103,7 +102,7 @@ class Objeto extends React.Component {
                 </div>
               }
               <div className='return'>
-                <Link to='/objetos' title='Volver a objetos'><FontAwesome name='arrow-left' /></Link>
+                <Link to='/objetos' title='Volver a objetos'><i class="fas fa-arrow-left"></i></Link>
               </div>
             </div>
 
@@ -111,13 +110,13 @@ class Objeto extends React.Component {
               <div className='excerpt'>{renderHTML(this.state.item.excerpt.rendered)}</div>
 
               <div className='show-full-button'>
-                <button onClick={() => { this.showFull() }}><FontAwesome name={showFullIcon} /> {'(ver '+showFullText+')'} </button>
+                <button onClick={() => { this.showFull() }}><i class={"fas fa-"+showFullIcon}></i> {'(ver '+showFullText+')'} </button>
               </div>
 
               {this.state.showFull &&
                 <div className='content'>{renderHTML(this.state.item.content.rendered)}
                   <div className='show-full-button'>
-                    <button onClick={() => { this.showFull() }}><FontAwesome name={showFullIcon} /> {'(ver '+showFullText+')'} </button>
+                    <button onClick={() => { this.showFull() }}><i class={"fas fa-"+showFullIcon}></i> {'(ver '+showFullText+')'} </button>
                   </div>
                 </div>
               }

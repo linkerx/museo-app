@@ -1,38 +1,52 @@
 var React = require('react');
 var WpCalendar = require('wp/calendar');
+var WpCalendarDay = require('wp/calendar-day');
+import moment from 'moment';
 require('./styles.less');
 
-class calendario extends React.Component{
+var today = {
+  year: moment().format('YYYY'),
+  month: moment().format('MMMM').charAt(0).toUpperCase() + moment().format('MMMM').slice(1),
+  day: moment().format('dddd').charAt(0).toUpperCase() + moment().format('dddd').slice(1),
+  number: moment().format('DD'),
+}
+
+class Calendario extends React.Component{
     constructor(props){
         super(props);
         this.state = {
         }
     }
 
-  render(){
-
-    const calendars = [
+   render(){
+   const calendars = [
         {
-            nombre: "Prensa",
-            apiKey: "AIzaSyCetr_fIN-0WXMec6-Yq-Q82t5ReOIglRI",
-            calId: "prensalegisrn@gmail.com",
-            clase: "cal-prensa"
+            nombre: "Efemérides",
+            apiKey: "AIzaSyCNWbiphmOQ0cYa7AV4PneCGwaezMLQt0M",
+            calId: "linkerx.com.ar_mshat57sculhtpe3hbe0tleco4@group.calendar.google.com",
+            clase: "calefe"
         },
         {
-            nombre: "Festivos Río Negro",
-            apiKey: "AIzaSyCetr_fIN-0WXMec6-Yq-Q82t5ReOIglRI",
-            calId: "at3a7efpb4da7ncff3f6gv9lck@group.calendar.google.com",
-            clase: "cal-festrn"
+            nombre: "Museo Emma",
+            apiKey: "AIzaSyCNWbiphmOQ0cYa7AV4PneCGwaezMLQt0M",
+            calId: "museoema@gmail.com",
+            clase: "calema"
         },
     ]
 
     return (
-      <section id='home-agenda' className='parallax-group'>
-      <div className='calendar-container'>
-        <div classname='day'>
-          <div>WpDayCalendar Component</div>
+      <section id='home-calendario' className='parallax-group'>
+        <div className='day-container'>
+          <div className='year'>{today.year}</div>
+          <div className='month'>{today.month}</div>
+          <div className='day'>{today.day}</div>
+          <div className='number'>{today.number}</div>
         </div>
-        <div className='calendar'>
+        <div className='day-efemerides'>
+          <h1>Un día como hoy...</h1>
+          <WpCalendarDay sources={calendars} />
+        </div>
+        <div className='calendar-container'>
           <WpCalendar
               selectable
               sources={calendars}
@@ -43,7 +57,6 @@ class calendario extends React.Component{
               )}
           />
         </div>
-      </div>
       </section>
     )
   }
@@ -257,27 +270,6 @@ module.exports = Calendario;
         return (
           <section id='home-calendario' className='parallax-group'>
             <div className='calendario-wrapper'>
-              <h1>Agenda del museo / Efemérides</h1>
-              <div className='day-container'>
-                <div className='year'>{today.year}</div>
-                <div className='month'>{today.month}</div>
-                <div className='day'>{today.day}</div>
-                <div className='number'>{today.number}</div>
-              </div>
-              <div className='day-efemerides'>
-                <h1>Un día como hoy...</h1>
-                {this.state.itemsToday
-                  ?
-                    <ul>
-                    {this.state.itemsToday.map(function(item,index){
-                      return (<li key={index} onClick={function(){this.onSelectEvent(item)}.bind(this)} >{item.title}</li>)
-                    }.bind(this))}
-                    </ul>
-                  :
-                  <div>No hay efemérides para hoy</div>
-
-                }
-              </div>
               <div className='calendar-container'>
                 <WpCalendar
                   selectable
