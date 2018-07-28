@@ -43,17 +43,15 @@ class Periodos extends React.Component {
     }
 
     WpApi.getList(opts)
-      .then(function(items) {
+      .then(function(resopnse) {
+        var items = response.data;
         this.setState(function () {
-
           items.sort(function(a,b){
             if(a.inicio < b.inicio) return -1;
             if(a.inicio > b.inicio) return 1;
             return 0;
           });
-
           setTimeout(function(){this.props.ready()}.bind(this), 1000);
-
           return {
             items: items,
             listStyle: this.state.listStyle

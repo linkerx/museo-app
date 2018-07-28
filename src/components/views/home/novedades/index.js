@@ -14,7 +14,7 @@ function Novedades(){
   return (
     <section id='home-novedades' className='parallax-group'>
       <h1>Ultimas Novedades</h1>
-      <WpList type='posts' queries={DestQueries} debug={false} imageSize='medium' imageRender='back' template='2' />
+      <WpList type='posts' queries={DestQueries} debug={false} imageSize='thumbnail' imageRender='back' template='2' imageLink={true} />
       <div className='ver-todas'><Link to='/novedades' >Ver todas las novedades</Link></div>
     </section>
   )

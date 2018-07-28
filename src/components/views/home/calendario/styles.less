@@ -279,6 +279,11 @@ section#home-calendario .modal-back {
   background-color: rgba(0, 0, 0, 0.4);
   z-index: 27;
   border-radius: 10px;
+
+  @media @narrow, @super-narrow {
+    top: 15px;
+    height: 580px;
+  }
 }
 
 section#home-calendario .calendar-modal {
@@ -293,14 +298,9 @@ section#home-calendario .calendar-modal {
   border-radius: 10px;
   box-shadow: 2px 2px 5px #aaa;
 
-  @media @square {
-    left: 10%;
-    width: 80%;
-  }
-
-  @media @narrow, @super-narrow {
-    left:5%;
-    width:90%;
+  @media @square, @narrow, @super-narrow {
+    left: 5%;
+    width: 90%;
   }
 }
 

@@ -58,14 +58,13 @@ class Topico extends React.Component {
           }
 
           WpApi.getList(opts_hechos)
-            .then(function(hechos) {
-
+            .then(function(response) {
+              var hechos = response.data;
               hechos.sort(function(a,b){
                 if(a.inicio < b.inicio) return -1;
                 if(a.inicio > b.inicio) return 1;
                 return 0;
               });
-
               var hechosAgrupados = hechos.reduce(function(acum,curr){
                 //console.log(curr);
                 if(curr.alcance == 'local'){
@@ -109,8 +108,8 @@ class Topico extends React.Component {
             }
 
             WpApi.getList(opts_objetos)
-              .then(function(objetos) {
-
+              .then(function(response) {
+                var objetos = response.data;
                 if(objetos.length == 0){
                    objetos = null;
                 }

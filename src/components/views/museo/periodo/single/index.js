@@ -58,8 +58,8 @@ class Periodo extends React.Component {
           }
 
           WpApi.getList(opts_hechos)
-            .then(function(hechos) {
-
+            .then(function(response) {
+              var hechos = response.data;
               hechos.sort(function(a,b){
                 if(a.inicio < b.inicio) return -1;
                 if(a.inicio > b.inicio) return 1;
@@ -109,8 +109,8 @@ class Periodo extends React.Component {
             }
 
             WpApi.getList(opts_objetos)
-              .then(function(objetos) {
-
+              .then(function(response) {
+                var objetos = response.data;
                 if(objetos.length == 0){
                    objetos = null;
                 }
