@@ -47,7 +47,7 @@ class Calendario extends React.Component{
           <WpCalendarDay sources={calendars} />
         </div>
         <div className='calendar-container'>
-          <WpCalendar selectable sources={calendars} debug={true}/>
+          <WpCalendar selectable sources={calendars} debug={false}/>
         </div>
       </section>
     )

@@ -272,12 +272,13 @@ section#home-calendario .day-efemerides ul li:hover {
 
 section#home-calendario .modal-back {
   position: absolute;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  background-color: rgba(0,0,0,0.5);
-  z-index:27;
+  top: 25px;
+  left: 0;
+  width: 100%;
+  height: 600px;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 27;
+  border-radius: 10px;
 }
 
 section#home-calendario .calendar-modal {
@@ -321,6 +322,17 @@ section#home-calendario .calendar-modal button.close-btn {
   position: absolute;
   top:0;
   right:0;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+section#home-calendario .calendar-modal button.close-btn i {
+  color: #777;
+  font-size: 30px;
+}
+
+section#home-calendario .calendar-modal button.close-btn:hover i {
+  color: #a4c306;
 }
 
 section#home-calendario .calendar-modal .post_content {
@@ -328,6 +340,10 @@ section#home-calendario .calendar-modal .post_content {
   padding: 10px 3%;
   height: 380px;
   overflow-y: auto;
+}
+
+section#home-calendario .calendar-modal .post_content h2 {
+  width: 92%;
 }
 
 section#home-calendario .calendar-modal .image_container {
