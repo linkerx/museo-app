@@ -6,7 +6,7 @@ require('./items.less');
 function FooterMenu(){
     return (
       <div className='footer-menu' >
-        <WpMenu url='https://admin.emmanozzi.org' location='main-menu-location' debug={true} />
+        <WpMenu url='https://admin.emmanozzi.org' location='main-menu-location' debug={false} />
       </div>
     )
 }

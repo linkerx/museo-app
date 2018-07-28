@@ -47,15 +47,7 @@ class Calendario extends React.Component{
           <WpCalendarDay sources={calendars} />
         </div>
         <div className='calendar-container'>
-          <WpCalendar
-              selectable
-              sources={calendars}
-              onSelectEvent={event => alert(event.title)}
-              onSelectSlot={(slotInfo) => alert(
-                `selected slot: \n\nstart ${slotInfo.start.toLocaleString()} ` +
-                `\nend: ${slotInfo.end.toLocaleString()}`
-              )}
-          />
+          <WpCalendar selectable sources={calendars} debug={true}/>
         </div>
       </section>
     )

@@ -5,7 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   entry: [
-    'webpack-dev-server/client?https://emmanozzi.org/',
+    'webpack-dev-server/client?https://emmanozzi.org:443',
     './src/index.js',
   ],
   output: {
@@ -18,6 +18,7 @@ module.exports = {
     historyApiFallback: true,
     contentBase: '.',
   },
+  devtool: 'source-map',
   module: {
     rules: [
       { test: /\.(js)$/, use: 'babel-loader', exclude: /node_modules/,},
