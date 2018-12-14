@@ -152,7 +152,7 @@ class Hecho extends React.Component {
               <div className='excerpt'>{renderHTML(this.state.item.excerpt.rendered)}</div>
 
               <div className='show-full-button'>
-                <button onClick={() => { this.showFull() }}><i class={"fas fa-"+showFullIcon}></i> {'(ver '+showFullText+')'} </button>
+                <button onClick={() => { this.showFull() }}><i className={"fas fa-"+showFullIcon}></i> {'(ver '+showFullText+')'} </button>
               </div>
 
               {this.state.showFull &&

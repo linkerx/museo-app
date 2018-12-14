@@ -213,7 +213,7 @@ class Topico extends React.Component {
                 }
               </div>
               <div className='return'>
-                <Link to='/topicos' title='Volver a topicos'><i class="fas fa-arrow-left"></i></Link>
+                <Link to='/topicos' title='Volver a topicos'><i className="fas fa-arrow-left"></i></Link>
               </div>
             </div>
 
@@ -221,14 +221,14 @@ class Topico extends React.Component {
               <div className='excerpt'>{renderHTML(this.state.item.excerpt.rendered)}</div>
 
               <div className='show-full-button'>
-                <button onClick={() => { this.showFull() }}><i class={"fas fa-"+showFullIcon}></i> {'(ver '+showFullText+')'} </button>
+                <button onClick={() => { this.showFull() }}><i className={"fas fa-"+showFullIcon}></i> {'(ver '+showFullText+')'} </button>
               </div>
 
-              {this.state.showFull &&
+              {/*this.state.showFull*/ true &&
                 <div className='content'>
                   {renderHTML(this.state.item.content.rendered)}
                   <div className='show-full-button'>
-                    <button onClick={() => { this.showFull() }}><i class={"fas fa-"+showFullIcon}></i> {'(ver '+showFullText+')'} </button>
+                    <button onClick={() => { this.showFull() }}><i className={"fas fa-"+showFullIcon}></i> {'(ver '+showFullText+')'} </button>
                   </div>
                 </div>
               }

@@ -6,7 +6,7 @@ function FooterSocial() {
   return (
     <div className="footer-social">
       <span>Seguinos en:</span>
-      <Link to='https://www.facebook.com/Museo-Emma-Nozzi-Banco-Provincia-184320998269935/'><i className="fab fa-facebook"></i></Link>
+      <Link to='https://www.facebook.com/Museo-Emma-Nozzi-Banco-Provincia-184320998269935/'><i className="fab fa-facebook-f"></i></Link>
     </div>
   )
 }

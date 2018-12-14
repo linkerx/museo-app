@@ -7,11 +7,12 @@ var Link = require('react-router-dom').Link;
 function TopicoItem(props) {
 
   var item_image = '';
-
   if(props.item._embedded && props.item._embedded['wp:featuredmedia']){
-    var item_image = props.item._embedded['wp:featuredmedia'][0].media_details.sizes['thumbnail'].source_url;
+    if(props.item._embedded['wp:featuredmedia'][0].media_details.sizes['medium']){
+      item_image = props.item._embedded['wp:featuredmedia'][0].media_details.sizes['medium'].source_url;
+    }
   } else if(props.defaultImg) {
-    var item_image = props.defaultImg;
+    item_image = props.defaultImg;
   }
 
   var show_fecha_inicio = '';

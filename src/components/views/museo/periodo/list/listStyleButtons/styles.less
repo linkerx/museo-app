@@ -2,15 +2,19 @@
 
 #archive-periodos #list-style-buttons {
   position: absolute;
-  top: 70px;
-  right: 5%;
+  top: 80px;
+  right: 6%;
   width: auto;
-  height: 35px;
+  height: 30px;
   display: flex;
+
+  @media @square, @narrow, @super-narrow {
+    top: 73px;
+  }
 }
 
 #archive-periodos #list-style-buttons button {
-  height: 35px;
+  height: 30px;
   background-color: #fff;
   margin: 10px 5%;
   padding: 0;
@@ -21,16 +25,16 @@
   cursor:not-allowed;
 }
 
-#archive-periodos #list-style-buttons button span:before {
-  font-size: 35px;
+#archive-periodos #list-style-buttons button i:before {
+  font-size: 30px;
   background-color: #fff;
   color:#333;
 }
 
-#archive-periodos #list-style-buttons button.active span:before {
+#archive-periodos #list-style-buttons button.active i:before {
   color: #6eb444;
 }
 
-#archive-periodos #list-style-buttons button:not(.active):hover span:before {
+#archive-periodos #list-style-buttons button:not(.active):hover i:before {
   color: #7a929e;
 }

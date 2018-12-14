@@ -3,6 +3,7 @@ var WpApi = require('wp/api');
 var WpItemImage = require('wp/item-image');
 var Cargando = require('utils/cargando');
 var FullscreenImage = require('wp/fullscreenImage');
+var FullModal = require('wp//fullscreenImage/fullmodal');
 var renderHTML = require('react-render-html');
 var Link = require('react-router-dom').Link;
 require('./styles.less');
@@ -24,6 +25,18 @@ class Objeto extends React.Component {
     this.updateItem();
     if(this.props.ready){
       setTimeout(function(){this.props.ready()}.bind(this), 1000);
+    }
+  }
+
+  componentDidUpdate() {
+    var images = document.querySelectorAll('img');
+    if(this.props.debug) {
+        console.log(images);
+    }
+    for(var x=0;x<images.length;x++){
+       images[x].addEventListener('click',function(){
+         FullModal.openFull('museo-modal',this.src,this.alt);
+       });
     }
   }
 
@@ -66,6 +79,7 @@ class Objeto extends React.Component {
 
     if(this.state.item && this.state.item._embedded){
       if(this.state.item._embedded['wp:featuredmedia']){
+        var item_image_caption = this.state.item._embedded['wp:featuredmedia'][0].caption.rendered;
         if(this.state.item._embedded['wp:featuredmedia'][0].media_details.sizes['large']){
           var item_image = this.state.item._embedded['wp:featuredmedia'][0].media_details.sizes['large'].source_url;
         } else {
@@ -97,12 +111,12 @@ class Objeto extends React.Component {
             <h1>{renderHTML(this.state.item.title.rendered)}</h1>
               {item_image &&
                 <div>
-                  <WpItemImage src={item_image} render='back' />
-                  <FullscreenImage imageSrc={item_image} modalContainer='museo-modal' desc={renderHTML(this.state.item.excerpt.rendered)} />
+                  <WpItemImage src={item_image} render='img' alt={item_image_caption} />
+                  <FullscreenImage imageSrc={item_image} modalContainer='museo-modal' desc={item_image_caption} />
                 </div>
               }
               <div className='return'>
-                <Link to='/objetos' title='Volver a objetos'><i class="fas fa-arrow-left"></i></Link>
+                <Link to='/objetos' title='Volver a objetos'><i className="fas fa-arrow-left"></i></Link>
               </div>
             </div>
 
@@ -113,7 +127,7 @@ class Objeto extends React.Component {
                 <button onClick={() => { this.showFull() }}><i class={"fas fa-"+showFullIcon}></i> {'(ver '+showFullText+')'} </button>
               </div>
 
-              {this.state.showFull &&
+              {/* this.state.showFull */ true &&
                 <div className='content'>{renderHTML(this.state.item.content.rendered)}
                   <div className='show-full-button'>
                     <button onClick={() => { this.showFull() }}><i class={"fas fa-"+showFullIcon}></i> {'(ver '+showFullText+')'} </button>

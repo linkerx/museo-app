@@ -16,7 +16,8 @@ function WpSiteArchive(props){
   ];
 
   if(props.category){
-      queries.push('categories='+props.category)
+      queries.push('categories='+props.category);
+      queries.push('per_page=12');
   }
 
   var archiveName = props.type+'s';

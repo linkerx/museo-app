@@ -15,8 +15,8 @@ function ListStyleButtons(props){
 
   return(
     <div id='list-style-buttons'>
-      <button className={classList} onClick={() => { props.changeStyle('list') }}><i class="fas fa-list"></i></button>
-      <button className={classIcons} onClick={() => { props.changeStyle('icons') }}><i class="fas fa-th"></i></button>
+      <button className={classList} onClick={() => { props.changeStyle('list') }}><i className="fas fa-list"></i></button>
+      <button className={classIcons} onClick={() => { props.changeStyle('icons') }}><i className="fas fa-th"></i></button>
     </div>
   )
 }

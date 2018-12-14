@@ -15,6 +15,11 @@
   clear:both;
 }
 
+#site-archive .list-container {
+  position:relative;
+  padding-bottom: 10px;
+}
+
 #site-archive .list {
   display: flex;
   flex-wrap: wrap;
@@ -23,6 +28,7 @@
   left:5%;
   width:90%;
   margin:auto;
+  padding-bottom: 10px;
 }
 
 #site-archive .list article {
@@ -55,9 +61,21 @@
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+  border-radius: 10px;
 }
 
 #site-archive .list article .date {
   margin-bottom: 10px;
   text-align: right;
+}
+
+#site-archive .list-pagination-top,
+#site-archive .list-pagination-bottom {
+  margin-left:5%;
+  width:90%;
+}
+
+#site-archive .list-pagination-top .pagination,
+#site-archive .list-pagination-bottom .pagination {
+  float:right;
 }
