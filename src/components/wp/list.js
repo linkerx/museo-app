@@ -42,6 +42,8 @@ class WpList extends React.Component {
       queries = this.props.queries
     }
 
+    console.log("props",this.props);
+
     if(typeof this.props.queries == 'undefined') {
       var itemsPerPage = 12;
       if(this.props.itemsPerPage){

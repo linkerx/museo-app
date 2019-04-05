@@ -26,22 +26,19 @@ function ShareButtons (props) {
     return(
         <section id='share-buttons'>
             <FacebookShareButton url={seoFullUrl} quote={props.quote} className="share-facebook">
-                <FacebookIcon size={40} round />
+                <FacebookIcon size={30} round />
             </FacebookShareButton>
             <TwitterShareButton url={seoFullUrl} quote={props.quote} className="share-twitter">
-                <TwitterIcon size={40} round />
+                <TwitterIcon size={30} round />
             </TwitterShareButton>
             <TelegramShareButton url={seoFullUrl} quote={props.quote} className="share-whatsapp">
-                <TelegramIcon size={40} round />
+                <TelegramIcon size={30} round />
             </TelegramShareButton>
             <WhatsappShareButton url={seoFullUrl} quote={props.quote} className="share-whatsapp">
-                <WhatsappIcon size={40} round />
+                <WhatsappIcon size={30} round />
             </WhatsappShareButton>
-            <GooglePlusShareButton url={seoFullUrl} quote={props.quote} className="share-gplus">
-                <GooglePlusIcon size={40} round />
-            </GooglePlusShareButton>
             <LinkedinShareButton url={seoFullUrl} quote={props.quote} className="share-whatsapp">
-                <LinkedinIcon size={40} round />
+                <LinkedinIcon size={30} round />
             </LinkedinShareButton>
         </section>
     )
