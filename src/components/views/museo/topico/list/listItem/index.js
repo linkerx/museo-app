@@ -7,7 +7,10 @@ var Link = require('react-router-dom').Link;
 function TopicoItem(props) {
 
   var item_image = '';
-  if(props.item._embedded && props.item._embedded['wp:featuredmedia']){
+
+  if(props.item.imagenes_dest && props.item.imagenes_dest.length > 1){
+    item_image = props.item.imagenes_dest[1].full;
+  } else if(props.item._embedded && props.item._embedded['wp:featuredmedia']){
     if(props.item._embedded['wp:featuredmedia'][0].media_details.sizes['medium']){
       item_image = props.item._embedded['wp:featuredmedia'][0].media_details.sizes['medium'].source_url;
     }
