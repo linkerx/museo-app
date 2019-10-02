@@ -5,6 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   entry: [
+    'webpack-dev-server/client?https://emmanozzi.org:443',
     './src/index.js',
   ],
   output: {
@@ -12,6 +13,12 @@ module.exports = {
     filename: 'bundle.js',
     publicPath: '/'
   },
+  devServer: {
+    disableHostCheck: true,
+    historyApiFallback: true,
+    contentBase: '.',
+  },
+  devtool: 'source-map',
   module: {
     rules: [
       { test: /\.(js)$/, use: 'babel-loader', exclude: /node_modules/,},
@@ -39,42 +46,12 @@ module.exports = {
     ]
   },
   plugins: [
+    new HtmlWebpackPlugin({
+      template: 'src/index.html'
+    }),
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('production')
-    }),
-
-  new HtmlWebpackPlugin({
-      template: 'src/index.html',
-      minify: {
-        collapseWhitespace: true,
-        collapseInlineTagWhitespace: true,
-        removeComments: true,
-        removeRedundantAttributes: true
-      }
-    }),
-    /*
-  new webpack.optimize.UglifyJsPlugin({
-      compress: {
-          warnings: false,
-          screw_ie8: true,
-          conditionals: true,
-          unused: true,
-          comparisons: true,
-          sequences: true,
-          dead_code: true,
-          evaluate: true,
-          if_return: true,
-          join_vars: true
-      },
-      output: {
-          comments: false
-      }
-  }),
-  */
-  new webpack.DefinePlugin({
-    'lnk_api_host': "'https://admin.emmanozzi.org'",
-    'lnk_api_dir': "'/api'",
-  })
-
-]
+      'lnk_api_host': "'https://admin.emmanozzi.org'",
+      'lnk_api_dir': "'/api'",
+    })
+  ]
 };

@@ -6,6 +6,7 @@ var WpItemTitle = require('wp/item-title');
 var WpItemImage = require('wp/item-image');
 var renderHTML = require('react-render-html');
 var Cargando = require('utils/cargando');
+var ShareButtons = require('./shareButtons');
 import BigCalendar from 'react-big-calendar';
 import moment from 'moment';
 require('react-big-calendar/lib/css/react-big-calendar.css');
@@ -271,6 +272,7 @@ class WpCalendar extends React.Component {
                           {post_image && <WpItemImage src={post_image} render='img' imageLink={true} linkTo={WpUtils.generateItemLinkUrl(this.state.modalItem.post)} />}
                           <div className='excerpt'>{renderHTML(this.state.modalItem.post.excerpt.rendered)}</div>
                           <div className='content'>{renderHTML(this.state.modalItem.post.content.rendered)}</div>
+                          <ShareButtons url={WpUtils.generateItemLinkUrl(this.state.modalItem.post)} quote={this.state.modalItem.post.title.rendered} />
                         </div>
                         :
                         <div className='no-item'>

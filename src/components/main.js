@@ -15,6 +15,7 @@ var Eje = require('./views/museo/escuela/single');
 var Objetos = require('./views/museo/objeto/list');
 var Objeto = require('./views/museo/objeto/single');
 var WpSite = require('wp/site');
+var WpList = require('wp/list');
 
 class Main extends React.Component {
 
@@ -58,6 +59,14 @@ class Main extends React.Component {
     if(this.state.loading){
       mainClass='loading';
     }
+
+    var DestQueries = [
+      '_embed',
+      'categories=21',
+      'per_page=3'
+    ];
+  
+
     return (
       <div id='main-wrapper' className={mainClass}>
         <Switch>
@@ -66,7 +75,9 @@ class Main extends React.Component {
           <Route exact path='/periodo/:slug' render={ function(props) { return ( <Periodo {...props} ready={this.ready} /> ) }.bind(this) } />
           <Route exact path='/topicos' render={ function(props) { return ( <Topicos {...props} ready={this.ready} /> ) }.bind(this) } />
           <Route exact path='/topico/:slug' render={ function(props) { return ( <Topico {...props} ready={this.ready} /> ) }.bind(this) } />
-          <Route exact path='/escuela' render={ function(props) { return ( <Ejes {...props} ready={this.ready} /> ) }.bind(this) } />
+          <Route exact path='/escuela' render={ function(props) { return ( 
+           <WpList type='posts' queries={DestQueries} debug={false} imageSize='thumbnail' imageRender='back' template='2' imageLink={true} itemsPerPage={3} />
+          )}} />
           <Route exact path='/escuela/eje/:slug' render={ function(props) { return ( <Eje {...props} ready={this.ready} /> ) }.bind(this) } />
           <Route exact path='/objetos' render={ function(props) { return ( <Objetos {...props} ready={this.ready} /> ) }.bind(this) } />
           <Route exact path='/objeto/:slug' render={ function(props) { return ( <Objeto {...props} ready={this.ready} /> ) }.bind(this) } />

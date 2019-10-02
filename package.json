@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --host 0.0.0.0 --port 8080"
+    "start": "webpack-dev-server --host 0.0.0.0 --port 8080",
+    "build": "webpack"
   },
   "babel": {
     "presets": [

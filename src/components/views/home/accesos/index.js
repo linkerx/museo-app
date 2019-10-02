@@ -24,9 +24,8 @@ function Accesos () {
         </Link>
       </li>
       <li className='escuela'>
-        <Link to='/'>
+        <Link to='/novedades-escuela'>
           <WpItemImage src='/public/assets/images/escuela3.jpg' render='back'/>
-          <EnConstruccion></EnConstruccion>
           <h2>Escuela</h2>
           <span>Espacio destinado a alumnos y docentes.</span>
         </Link>
