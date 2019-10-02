@@ -52,7 +52,6 @@ module.exports = {
         removeRedundantAttributes: true
       }
     }),
-    /*
   new webpack.optimize.UglifyJsPlugin({
       compress: {
           warnings: false,
@@ -70,7 +69,13 @@ module.exports = {
           comments: false
       }
   }),
-  */
+  new CompressionPlugin({
+    asset: "[path].gz[query]",
+    algorithm: "gzip",
+    test: /\.js$|\.css$|\.html$/,
+    threshold: 10240,
+    minRatio: 0.8
+  }),
   new webpack.DefinePlugin({
     'lnk_api_host': "'https://admin.emmanozzi.org'",
     'lnk_api_dir': "'/api'",
